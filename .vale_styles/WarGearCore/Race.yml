@@ -1,0 +1,51 @@
+# based on the "Alex" Vale Style
+# removed a few things, which would produce constant false positives
+extends: substitution
+message: Consider using '%s' instead of '%s'.
+ignorecase: true
+level: warning
+action:
+  name: replace
+swap:
+  islamist: muslim|person of Islamic faith|fanatic|zealot|follower of islam|follower of the islamic faith
+  islamists: muslims|people of Islamic faith|fanatics|zealots
+  Gipsy|gyp|gyppo|gypsy: Nomad|Traveler|Roma|Romani
+  animal spirit: favorite|inspiration|personal interest|personality type
+  circle the wagons: defend
+  dream catcher: favorite|inspiration|personal interest|personality type
+  eskimos?: Inuits
+  ghetto: projects|urban
+  goy|goy[iu]m: a person who is not Jewish|not Jewish
+  grandfather clause: legacy policy|legacy clause|deprecation policy
+  grandfather policy: legacy policy|legacy clause|deprecation policy
+  grandfathered: deprecated
+  grandfathering: deprecate
+  hymie: Jewish person
+  indian giver?: "go back on one\u2019s offer"
+  japs: Japanese person|Japanese people
+  jump the reservation: disobey|endure|object to|oppose|resist
+  latin[ao]: Latinx
+  long time no hear: "I haven\u2019t seen you in a long time|it\u2019s been a long\
+    \ time"
+  long time no see: "I haven\u2019t seen you in a long time|it\u2019s been a long\
+    \ time"
+  mexican: Latinx
+  non ?white: person of color|people of color
+  off reserve|off the reservation: disobey|endure|object to|oppose|resist
+  on the warpath: defend
+  orientals?: Asian people
+  pin[ao]ys: Filipinos|Filipino people
+  pocahontas: Native American
+  pow ?wow: conference|gathering|meeting
+  primitive: simple|indigenous|hunter-gatherer
+  red indians?: Native American
+  redskins?: Native American People
+  sand niggers|towel heads: Arabs|Middle Eastern People
+  savage: simple|indigenous|hunter-gatherer
+  shlomo|shyster: Jewish person
+  sophisticated culture: complex culture
+  sophisticated technology: complex technology
+  spade: a Black person
+  spirit animal: favorite|inspiration|personal interest|personality type
+  totem: favorite|inspiration|personal interest|personality type
+  tribe: society|community

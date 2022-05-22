@@ -1,0 +1,2281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="generator" content="Documentor v0.1.3 (https://github.com/BafS/Documentor)" />
+  <title>WarGearCore UserDocs</title>
+  <style>
+    @import url(https://fonts.googleapis.com/css?family=Lato:300,700|Merriweather:300italic,300|Inconsolata:400,700);
+*, :after, :before {
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
+}
+html, body {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+}
+body {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.6875em;
+  font-family: Lato, sans-serif;
+}
+a {
+  -webkit-transition: all .2s linear;
+  transition: all .2s linear;
+}
+.main {
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: -webkit-box;
+  display: flex;
+  -ms-flex-pack: end;
+  -webkit-box-pack: end;
+          justify-content: flex-end;
+  min-height: 100%;
+}
+.sidebar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  min-height: 0;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  width: 270px;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 4;
+  font-size: 15px;
+  line-height: 18px;
+  background: #373f52;
+  color: #d5dae6;
+  overflow: hidden;
+  -webkit-transition: -webkit-transform ease-in-out .25s;
+  transition: -webkit-transform ease-in-out .25s;
+  transition: transform ease-in-out .25s;
+  transition: transform ease-in-out .25s, -webkit-transform ease-in-out .25s;
+}
+.sidebar ul.menu {
+  margin-bottom: 44px;
+  overflow-y: auto;
+}
+.sidebar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.sidebar ul > li > ul a {
+  padding-left: 34px;
+  height: 38px;
+  line-height: 38px;
+}
+.sidebar ul li {
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+}
+.sidebar ul a {
+  display: block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 100%;
+  color: #d5dae6;
+  padding: 0 14px;
+  height: 40px;
+  line-height: 40px;
+  text-decoration: none;
+  margin: 0;
+  border-left: 2px solid transparent;
+}
+.sidebar ul a.active {
+  background: rgba(255, 255, 255, .04);
+  border-left: 2px solid rgba(255, 255, 255, .6);
+}
+.sidebar a:hover, .sidebar .header a:hover {
+  color: #fff;
+}
+.sidebar ul a:hover {
+  background: rgba(255, 255, 255, .08);
+}
+.sidebar .header a {
+  color: #d5dae6;
+  text-decoration: none;
+}
+.sidebar .header {
+  padding: 0 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, .5);
+}
+
+.sidebar .logo {
+  margin-top: 15px;
+  float: right;
+  max-width: 120px;
+  display: block;
+  max-height: 50px;
+}
+
+.sidebar .search-input {
+  font-family: Lato, sans-serif;
+  color: #d5dae6;
+  background-color: rgb(43, 49, 64);
+  border: 0;
+  padding: 14px;
+  font-size: 15px;
+  font-weight: normal;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  -webkit-transition: -webkit-box-shadow .15s ease;
+  transition: -webkit-box-shadow .15s ease;
+  transition: box-shadow .15s ease;
+  transition: box-shadow .15s ease, -webkit-box-shadow .15s ease;
+  outline: none;
+}
+
+.sidebar .search-input:hover {
+  background-color: rgb(41, 47, 61);
+}
+
+.sidebar .search-input:focus {
+  -webkit-box-shadow: 0 0 0 1px rgba(255, 255, 255, .5) inset;
+          box-shadow: 0 0 0 1px rgba(255, 255, 255, .5) inset;
+}
+
+.full-width .sidebar {
+  -webkit-transform: translateX(-270px);
+          transform: translateX(-270px);
+  will-change: transform;
+}
+
+.full-width .content {
+  margin-left: 0;
+}
+
+.content {
+  font-family: Merriweather, 'Book Antiqua', Georgia, 'Century Schoolbook', serif;
+  font-size: 1em;
+  line-height: 1.6875em;
+  width: 100%;
+  margin-left: 270px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  height: 100%;
+  position: relative;
+  z-index: 3;
+  padding: 0 32px;
+  padding: 0 2rem;
+  -webkit-transition: margin ease-in-out .25s;
+  transition: margin ease-in-out .25s;
+  will-change: margin-left;
+}
+
+.content h1,.content h2,.content h3,.content h4,.content h5,.content h6 {
+  font-family: Lato, sans-serif;
+  font-weight: 700;
+  line-height: 1.5em;
+  word-wrap: break-word;
+}
+
+.content h1 {font-size:2em; margin:1em 0 .5em}
+.content h1.heading {color: #666; margin: 1.25em 0 .5em}
+.content h1 small {font-weight:300}
+.content h1 a.view-source {font-size:19.2px;font-size:1.2rem}
+.content h2 {font-size:1.6em;margin:1em 0 .5em;font-weight:700}
+.content h3 {font-size:1.3em; margin:1em 0 .5em; font-weight:700}
+.content .page a {color:#000;}
+.content a *,.content a :after,.content a :before,.content a:after,.content a:before {text-shadow:none}
+.content a:visited {color:#000}
+.content ul li {line-height:1.5em}
+.content ul li>p {margin:0}
+.content blockquote {font-style:italic;margin:.5em 0;padding:.25em 1.5em;border-left:3px solid #e1e1e1;display:inline-block}
+.content blockquote :first-child {padding-top:0;margin-top:0}
+.content blockquote :last-child {padding-bottom:0;margin-bottom:0}
+.content a.no-underline,.content pre a {color:#9768d1;text-shadow:none;text-decoration:none;background-image:none}
+.content a.no-underline:active,.content a.no-underline:focus,.content a.no-underline:hover,.content a.no-underline:visited,.content pre a:active,.content pre a:focus,.content pre a:hover,.content pre a:visited {color:#9768d1;text-decoration:none}
+.content code {font-weight:400;background-color:#f7f9fc;vertical-align:baseline;border-radius:2px;padding:.1em .2em;border:1px solid #d2ddee}
+.content pre {margin:1.5em 0; line-height: 1.5em}
+.content img {max-width: 100%}
+
+.content table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.content th, .content td {
+  padding: 4.8px 8px;
+  padding: 0.3rem 0.5rem;
+  text-align: left;
+  border-bottom: 1px solid #e1e1e1;
+}
+
+.content .page {
+  padding: 15px 0;
+  -webkit-transition: all .2s linear;
+  transition: all .2s linear;
+  /* min-height: 100%; */
+  opacity: 1;
+}
+
+.content .page.hide {
+  display: none;
+  opacity: 0;
+}
+
+.footer {
+  color: #999;
+  font-size: .8em;
+  font-style: italic;
+  text-align: center;
+  margin: 30px 0;
+}
+
+.footer a, .footer a:visited {
+  color: #888;
+}
+
+.footer a:hover {
+  color: #444;
+}
+
+.tools {
+  opacity: .6;
+  top: 4px;
+  left: 6px;
+  position: absolute;
+  -webkit-transition: opacity .15s linear;
+  transition: opacity .15s linear;
+}
+
+.tools:hover {
+  opacity: .9;
+}
+
+.tools.hide, .search-input.hide {
+  display: none;
+}
+
+.tools button {
+  color: #373f52;
+  float: left;
+  font-size: 16px;
+  height: 30px;
+  width: 30px;
+  margin: 0;
+  background: transparent;
+  margin-right: 4px;
+  font-weight: 300;
+  border: none;
+  line-height: 0;
+  -webkit-transition: background .2s ease;
+  transition: background .2s ease;
+  outline: none;
+}
+
+.tools button:hover {
+  background: rgba(0, 0, 0, .05);
+  cursor: pointer;
+}
+
+.raindrop.icon {
+  color: #373f52;
+  position: absolute;
+  margin-left: 3px;
+  margin-top: -3px;
+  width: 10px;
+  height: 10px;
+  border: solid 1px currentColor;
+  border-radius: 6px 6px 6px 0;
+  -webkit-transform: rotate(135deg);
+          transform: rotate(135deg);
+}
+
+.main.dark {
+  background: rgb(31, 35, 46);
+}
+
+.dark .content {
+  color: #d5dae6;
+}
+
+.dark .content code {
+  background-color: rgb(41, 47, 61);
+}
+
+.dark .tools button, .dark .tools button .icon {
+  color: #d5dae6;
+}
+
+.dark .content .page a {
+  color: #d5dae6;
+}
+
+.dark .content h1.heading {
+  color: #bbb;
+}
+
+.content .highlight {
+  background: rgba(255, 252, 53, .5);
+}
+
+.sidebar a.highlight:after {
+  position: absolute;
+  content: " ";
+  height: 10px;
+  width: 10px;
+  background: rgba(255, 252, 53, .8);
+  border-radius: 9px;
+  right: 6%;
+  margin-top: 14px;
+}
+
+  </style>
+</head>
+<body>
+  <div class="main">
+    <section class="sidebar">
+      <div class="header">
+        <h1>
+            <a href="https://github.com/jan9103/WarGearCore">WarGearCore UserDocs</a>
+        </h1>
+        <span>1.0.0</span>
+      </div>
+
+      <ul class="menu">
+        <li>
+          <a href="#0_Intro">Intro</a>
+          <ul>
+            <li><a href="#wgc">WarGearCore</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#future">Ausblick</a></li>
+          </ul>
+        </li>
+        <li><a href="#basics">Grundkonzepte von WGC</a></li>
+        <li>
+          <a href="#2_WGCore">WGCore</a>
+          <ul>
+            <li><a href="#chat">Chat</a></li>
+            <li><a href="#items">Item Manipulation</a></li>
+            <li><a href="#movement">Fortbewegung</a></li>
+            <li><a href="#other">Other</a></li>
+            <li><a href="#performance">Performance</a></li>
+            <li><a href="#pc">Portable Kanone</a></li>
+            <li><a href="#shears">Schere</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#3_WGArea">WGArea</a>
+          <ul>
+            <li><a href="#area/manage">Management</a></li>
+            <li><a href="#area/basics">Basics</a></li>
+            <li><a href="#area/tb">Testblock</a></li>
+            <li><a href="#area/backup">Backup</a></li>
+            <li><a href="#tracer">Tracer</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#4_WGFight">WGFight</a>
+          <ul>
+            <li><a href="#fight/basics">Fight Basics</a></li>
+            <li><a href="#fight/settings">Fight Einstellungen</a></li>
+            <li><a href="#fight/mods">Fight Modifikatoren</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#5_WGEdit">WGEdit</a>
+          <ul>
+            <li><a href="#wge/basics">WGE Basics</a></li>
+            <li><a href="#wge/simple">Simple Befehle</a></li>
+            <li><a href="#wge/clipboard">WGE Clipboard</a></li>
+            <li><a href="#wge/diff">WGE Diff</a></li>
+            <li><a href="#wge/fix">WGE Fix</a></li>
+            <li><a href="#wge/resize">WGE Resize</a></li>
+            <li><a href="#wge/schem">WGE Schem</a></li>
+            <li><a href="#wge/slab">WGE Slab</a></li>
+            <li><a href="#wge/techhide">WGE Techhide</a></li>
+            <li><a href="#wge/xray">WGE XRay</a></li>
+          </ul>
+        </li>
+        <li><a href="#defence">WGCDefence</a></li>
+        <li>
+          <a href="#7_Verwaltung">Verwaltung</a>
+          <ul>
+            <li><a href="#setup">Setup</a></li>
+            <li><a href="#config">Config</a></li>
+            <li><a href="#files">Dateien</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <input class="search-input hide" placeholder="search"></input>
+    </section>
+
+    <section class="content">
+      <div class="tools hide">
+        <button class="toggle-sidebar">☰</button>
+        <button class="toggle-light">
+          <div class="raindrop icon"></div>
+        </button>
+        <button class="previous-page"><</button>
+        <button class="next-page">></button>
+      </div>
+
+      <div class="page" id="0_Intro">
+        <h1 class="heading">Intro</h1>
+        
+      </div>
+
+      <div class="page" id="wgc">
+        <h1 class="heading">WarGearCore</h1>
+        <h2>Was ist WGC</h2>
+<p>WGC ist ein Bukkit-Plugin für WarGear Team- und Homeserver.</p>
+<p>Aufgrund des großen Umfangs ist das Plugin in Abschnitte aufgeteilt:</p>
+<h3>WGCore</h3>
+<p>Alles was nicht anders Kategorisiert wurde.</p>
+<p>Beispielfeatures:</p>
+<ul>
+<li>NightVision</li>
+<li>Kanonen Nachlader</li>
+<li>Fernzünder</li>
+<li><a href="#pc">Portable Kanone</a></li>
+<li>Lag schutz System
+<ul>
+<li>Itemmanager</li>
+<li>Notfall tnt entferner</li>
+</ul>
+</li>
+</ul>
+<h3>WGArea</h3>
+<p>WGA lässt die Admins die Welten in Beriche einteilen.</p>
+<p>Diese Beriche haben getrennte TNT-Schadenseinstellungen, etc.</p>
+<p>Einige Fearures:</p>
+<ul>
+<li><a href="#area/basics">Freeze &amp; Tnt</a></li>
+<li><a href="#tracer">Tracer</a></li>
+<li>Customisierbarer <a href="#area/tb">Testblock</a></li>
+<li>Automatische <a href="#area/backup">Backups</a></li>
+</ul>
+<h3>WGEdit</h3>
+<p>Das integrierte WorldEdit.</p>
+<p>Dies wird vorallem vom Plugin selber (z.b. für Backups, Testblöcke, etc) verwendet
+und ist nicht besonders Nutzerfreundlich.</p>
+<p>Allerdings hat es einige Spezialfeatures:</p>
+<ul>
+<li>Panzerungshilfe</li>
+<li>Resizer</li>
+</ul>
+<p>Es empfiehlt sich weiterhin ein normales WorldEdit zu benutzen.</p>
+<h3>WGFight</h3>
+<p>Ein erweiterbarer Fightmanager.</p>
+<p>WGF bietet zudem <a href="#fight/mods">Modifikatoren</a> wie:</p>
+<ul>
+<li>Rising Tides</li>
+<li>Tnt Regen</li>
+<li>Sackhüpfen (erweiterung)</li>
+<li>EnderGear (erweiterung)</li>
+</ul>
+<hr>
+<h2>Ziel von WGC</h2>
+<h3>Einsatzbereiche</h3>
+<ul>
+<li>Homeserver
+<ul>
+<li>Stabiler als große Server (Auslastung, Abstürze, nicht startende Baus, etc)</li>
+</ul>
+</li>
+<li>Teamserver
+<ul>
+<li>Privatsphäre</li>
+<li>Unabhägigkeit von abstürzen</li>
+<li>andere Features</li>
+</ul>
+</li>
+<li>Fightserver mit Freunden mit <a href="#fight/mods">Mods</a></li>
+<li>Nicht Regelwerkskonforme WarGears</li>
+</ul>
+
+      </div>
+      <div class="page" id="faq">
+        <h1 class="heading">FAQ</h1>
+        <h2>Wo kann ich fragen stellen, etc?</h2>
+<p>auf dem <a href="https://discord.gg/ddB2MDK">Discord</a>.</p>
+<h2>Warum ist das Plugin auf Englisch?</h2>
+<p>Weil ich keine Lust hatte das alte Sprachdatei basierende System beizubehalten
+und eine Nutzerumfrage so entschieden hat.</p>
+<h2>Gibt es WGC für andere Minecraft Versionen?</h2>
+<p>Da die 1.12 und 1.15 viele unterschiede hat gibt es keine vollständigen pre 1.15 Versionen.</p>
+<p>Es gab einmal eine 1.18 version, aber ich warte vorerst auf die großen server falls diese
+die 1.18 überspringen, da es ein größerer aufwand ist und sich so vermutlich nicht lohnt.</p>
+<h2>Ist WGC sicher?</h2>
+<p>Es gibt keinerlei garantie für irgendwas, aber ich hatte bislang von keinene
+plugin-verursachten Problemen gehört.
+Du kannst dir gerne den code auf <a href="https://github.com/jan9103/WarGearCore">GitHub</a> anschauen.</p>
+
+      </div>
+      <div class="page" id="future">
+        <h1 class="heading">Ausblick</h1>
+        <p>Ich (Jan9103) arbeite nicht besonders Konsistent oder viel an WGC.</p>
+<p>Da ich inzwischen Vollzeit arbeite habe ich allgemein auch nicht
+mehr so viel Zeit wie in der vergangenheit.</p>
+<p>Es werden vermutlich noch Dinge von mir kommen (vorallem wenn ich mal
+wieder an WarGears interresiert bin), aber erwartet keine Konsistenz.</p>
+<p>Meine Ideenlisten sind viel zu lang hierfür, aber ich wollte trotzdem
+ein paar größere Ideen mit euch teilen:</p>
+<hr>
+<h2>Chaträume und Integration</h2>
+<p>Ein großer und ein Fight-Teamchat sind gut und schön, aber wie wäre es mit
+noch mehr und einfach zu nutzender aufteilung?
+Und wenn wir schon dabei sind Cross-Platform Chaträumen?</p>
+<h3>Cross-Platform</h3>
+<p>Hierfür wird eine API eingebaut werden und dann via addons (andere Plugins die WGCs
+APIs nutzen) verbunden.</p>
+<p>Geplante Platformen:</p>
+<ul>
+<li><a href="https://discord.com/">Discord</a></li>
+<li><a href="https://matrix.org/">Matrix</a></li>
+<li><a href="https://revolt.chat/">Revolt</a></li>
+<li><a href="https://rocket.chat/">Rocket.Chat</a></li>
+</ul>
+<hr>
+<h2>Git für WarGears</h2>
+<p>Mögliche Ergebnisse:</p>
+<ul>
+<li>Rückgängig machen von Fehlern / Experimenten</li>
+<li>Aufteilen der Arbeit ohne sich in die Quere zu kommen oder auf dem gleichem Server zu seien
+<ul>
+<li>Design und Kanonen / mehrere Kanonen / ..</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2>Decentral WGC</h2>
+<p>Simplere Idee:</p>
+<ul>
+<li>Geteilte Chat-Channels zwischen WGC (und anderen) Servern haben</li>
+<li>Einstellungen zwischen Servern Synchronisieren</li>
+</ul>
+<p>Erweiterte Ideen:</p>
+<ul>
+<li>Bungeecord ähnlich Spieler für Fights verleihen</li>
+<li>Dezentrale Fights
+<ul>
+<li>Techklau schutz indem jeder server nur sein WarGear kennt</li>
+<li>Cross-Version (1.15 vs 1.18) Fights</li>
+</ul>
+</li>
+<li><a href="https://teletype.atom.io/">Teletype</a> (ein WarGear von meheren Servern aus bauen)</li>
+</ul>
+<h3>Mögliche Ergebnisse</h3>
+<p>Eine Entlastung der großen Server:</p>
+<ul>
+<li>Bauserver könnten ausgelagert werden, da es keinene Nachteil mehr hätte</li>
+</ul>
+<hr>
+<h2>Twitch Integration (Addon)</h2>
+<p>Fight Mods:</p>
+<ul>
+<li>Viewer steuern WarGear</li>
+<li>Viewer steuern Events (Voting/ Redeems)</li>
+</ul>
+<p>Chat integration</p>
+<hr>
+<h2>Package Manager</h2>
+<p>Manuell Dateien finden, runterladen, installieren und dann debuggen macht nicht viel Spaß. Das ist allerdings die aktuelle richtung mit immer mehr Extension / Addon / Mod / .. optionen von WGC.<br>
+Wie wäre es wenn man einfach ähnlich zu Linux soetwas im Chat machen kann:</p>
+<pre><code class="language-text">&gt; /packages search worldedit
+WorldEdit: Faster building with Commands.
+FAWE: a faster, but buggier version of WorldEdit
+WorldEditPlus: adds a bunch of shortcuts like //p //floppy //90
+
+&gt; /packages install WorldEditPlus
+Installing WorldEditPlus..
+WorldEditPlus installed and Enabled.
+
+&gt; /packages update
+Updates running..
+Downloaded FAWE v12345.
+Already up to date: WorldEditPlus.
+Updates downloaded - Restarting Updated Plugins..
+FAWE restarted.
+Updates done.
+
+&gt; /packages update full
+Updates running..
+Downloaded WGC v12345
+Downloaded Spigot 1.15.2 v1832
+Restarting Server to install Spigot Updates..
+</code></pre>
+
+      </div>
+      <div class="page" id="basics">
+        <h1 class="heading">Grundkonzepte von WGC</h1>
+        <h2>Area</h2>
+<p>Eine area (deutsch: Bereich) ist ein Weltabschnitt, welcher von dem Plugin als getrennter Bau
+bzw Fight Bereich anerkannt wird.</p>
+<p>Viele Befehle gehen nur innerhalb eines Bereiches und haben nur auf diesen eine Auswirkung.</p>
+
+      </div>
+
+      <div class="page" id="2_WGCore">
+        <h1 class="heading">WGCore</h1>
+        
+      </div>
+
+      <div class="page" id="chat">
+        <h1 class="heading">Chat</h1>
+        <p>WGC hat ein eigenes Chatsystem, welche nicht nur Chatthemes erlaubt,
+sondern auch markdown-ähkliche features implimentiert.</p>
+<h2>Aussehen ändern</h2>
+<p><code>/settings</code></p>
+<p>Da der Minecraft Chat vor der 1.16 nur 16 Farben unterstützt hat gibt es die
+<code>RGB JSON</code> Option. Da das Plugin 1.15 ist habe ich bislang noch nicht oft mehr
+Farben verwendet, wodurch es fast nie einen unterschied macht.</p>
+<p>Du kannst gerne weitere Chatthemes im Discord vorschlagen.</p>
+<p>&quot;Inspirations&quot;-Quellen der Chatthemes (ich habe einige Namen angepasst
+um legalen Problemen aus dem Weg zu gehen):</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Quelle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Vanilla</td>
+<td>Bukkit</td>
+</tr>
+<tr>
+<td>VaporWarfare</td>
+<td>SteamWar</td>
+</tr>
+<tr>
+<td>YourGamingPlanet</td>
+<td>MyPlayPlanet</td>
+</tr>
+<tr>
+<td>Pastell</td>
+<td></td>
+</tr>
+<tr>
+<td>Yeti</td>
+<td></td>
+</tr>
+<tr>
+<td>XAMPP</td>
+<td>XAMPP Server Konsole</td>
+</tr>
+<tr>
+<td>WTUtil</td>
+<td>WarTechUtil Plugin (WarTech Teamserver)</td>
+</tr>
+<tr>
+<td>PHCore</td>
+<td>PhantomCore Plugin (Phantom Teamserver)</td>
+</tr>
+<tr>
+<td>Interstellar</td>
+<td>AmirCore Plugin (Interstellar Teamserver)</td>
+</tr>
+<tr>
+<td>Old WGC</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2>Markdown</h2>
+<h3>Bold</h3>
+<p><code>normal **bold** normal</code></p>
+<h3>Mehrzeilig</h3>
+<p><code>\n</code> beginnt eine neue Zeile.</p>
+<h3>Links</h3>
+<p><strong>Option 1:</strong> Einfach den Link schreiben</p>
+<p><strong>Option 2:</strong><br>
+<code>[Wikipedia](https://wikipedia.org)</code> wird im Chat als <code>Wikipedia</code> angezeigt und verlinkt nach <code>https://wikipedia.org</code></p>
+<p><code>Schau dir das [Tutorial von WarTech](https://www.youtube.com/watch?v=dQw4w9WgXcQ) an</code> geht auch.</p>
+<p>Zum schutz der nutzer wird beim hovern immer der reale link angezeigt.</p>
+<p><strong>Option 3:</strong> <code>r/AdmiralsMemeKueche</code> sowie alle anderen <code>r/</code> werden automatisch zu reddit links erweitert.</p>
+<h3>Pingen von Spielern</h3>
+<p><code>@Jan9103</code> pingt den Spiler <code>Jan9103</code> an:</p>
+<ul>
+<li>es wird ein ton abgespielt (lautstäke kann in <code>/settings</code> eingestellt werden)</li>
+<li>der text wird speziell gehighlited</li>
+</ul>
+<h3>Befehle vorschlagen</h3>
+<p>eine Nachricht im format <code>./BEFEHL MIT ARGUMENTEN</code> kann mit einem click in das TExtfeld vorgefüllt werden und
+beeinhaltet (falls herausfindbar) eine kurzbeschreibung.</p>
+<h3>Emojis</h3>
+<p>Wenn du es bevorzugst ASCII-Emojis zu beschreiben kannst du dies in <code>/settings</code> deaktivieren.</p>
+<table>
+<thead>
+<tr>
+<th>Kürzel</th>
+<th>Zeichen (sieht in minecraft etwas anders aus)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>o^</code></td>
+<td><code>♂</code></td>
+</tr>
+<tr>
+<td><code>o+</code></td>
+<td><code>♀</code></td>
+</tr>
+<tr>
+<td><code>ou</code></td>
+<td><code>☿</code></td>
+</tr>
+<tr>
+<td><code>:(</code></td>
+<td><code>☹</code></td>
+</tr>
+<tr>
+<td><code>:)</code></td>
+<td><code>☺</code></td>
+</tr>
+<tr>
+<td><code>&lt;3</code></td>
+<td><code>❤</code></td>
+</tr>
+<tr>
+<td><code>x</code></td>
+<td><code>✖</code></td>
+</tr>
+<tr>
+<td><code>TM</code></td>
+<td><code>™</code></td>
+</tr>
+</tbody>
+</table>
+<h3>Bilder</h3>
+<p>Du kannst verpixelte bilder senden.<br>
+Syntax: <code>%!https://static.wikia.nocookie.net/minecraft_gamepedia/images/d/d2/Pufferfish_Artwork.png</code></p>
+<p>Wenn dich Bilder nerven schalte sie in <code>/settings</code> aus.</p>
+<hr>
+<h2>Private Nachrichten</h2>
+<p><code>/tell</code>, etc funktionieren wir gewohnt.</p>
+<p><code>/r</code> kann in <code>/settings</code> personalisiert werden:<br>
+Du kannst entweder der Person der du zuletzt geschrieben hast oder der Person die dir zuletzt geschrieben hat antworten.</p>
+<hr>
+<h2>Join Panel</h2>
+<p>Das JoinPanel kann in <code>/settings</code> ausgetauscht werden</p>
+
+      </div>
+      <div class="page" id="items">
+        <h1 class="heading">Item Manipulation</h1>
+        <h2>Alle Items</h2>
+<h3>Enchanten</h3>
+<p><code>/ench ENCHANTMENT LEVEL</code> erlaubt die Items über die Limits von <code>/enchant</code>
+hinweg zu enchanten.</p>
+<p><code>/unenchant ENCHANTMENT</code> erlaubt dir enchantments zu entfernen.</p>
+<h3>Umbenennen</h3>
+<p><code>/rename TEXT</code> (+farbcodes)</p>
+<h3>Lore</h3>
+<p>Du kannst lore an items anhängen</p>
+<p><code>/lore TEXT</code></p>
+<hr>
+<h2>Bücher</h2>
+<h3>Farben</h3>
+<p>Farbcodes in dem Buch, was du in der Hand hälst anwenden: <code>/colorbook</code></p>
+<h3>Entsignieren</h3>
+<p>Buch entsignieren: <code>/unsign</code></p>
+<hr>
+<h2>Schilder</h2>
+<h3>Farben</h3>
+<p>Du kaeest wie gewohnt einfach Farbcodes nutzen.</p>
+<h3>Bearbeiten</h3>
+<p>mit einem SChild in der Hand ohne zu sneaken rechtsclicken.</p>
+<hr>
+<h2>TNT</h2>
+<h3>unstable TNT</h3>
+<p>unstable tnt explodiert wenn man es im survival abbaut.</p>
+<p>Einfach ein tnt in <code>unstable</code> umbennenen (<code>/rename unstable</code>) und plazieren.</p>
+<p>Bestimmt lustig in einem Fight.</p>
+
+      </div>
+      <div class="page" id="movement">
+        <h1 class="heading">Fortbewegung</h1>
+        <h2>Spielerbewegung</h2>
+<h3>Geschwindigkeit</h3>
+<p><code>/flyspeed ()</code> lässt dich deine Fluggeschwindigkeit auf irgendwas
+zwischen -10 (invertierte steuerung) und 10 einstellen.</p>
+<p><code>/walkspeed ()</code> lässt dich deine laufgeschwindigkeit auf irendwas
+zwischen 0 (nur hüpfen geht) und 10 einstellen.</p>
+<h3>Fly</h3>
+<p><code>/fly</code></p>
+<hr>
+<h2>Back</h2>
+<p><code>/back</code> erlaubt dir zu deinem Todesort oder den ort vor
+dem letztem Teleport zurückzukehren.</p>
+<p><code>/back</code> kann <code>/back</code> rückgängig machen.</p>
+<p>leider wird der worldedit-teleport als teleport erkannt.</p>
+<hr>
+<h2>Zu Bereichen teleportieren</h2>
+<p>Ausserhalb von Bereichen reicht <code>/a</code> aus. In Berichen: <code>/a tp</code>.</p>
+<h3>Erweiterte Syntax</h3>
+<p><code>/a tp</code> kann gefiltert und sortiert werden (siehe <code>/a tp -h</code>)</p>
+
+      </div>
+      <div class="page" id="other">
+        <h1 class="heading">Other</h1>
+        <h2>Nightvision</h2>
+<p><code>/nv</code></p>
+<hr>
+<h2>Köpfe</h2>
+<p><code>/skull</code></p>
+<hr>
+<h2>Eieruhr</h2>
+<p><code>/timer start MINUTEN</code> startet es</p>
+<p><code>/timer stop</code> bricht es ab</p>
+<p><code>/settings</code> erlaubt die Lautstärke einzustellen.</p>
+<hr>
+<h2>Heal</h2>
+<p><code>/heal</code></p>
+<p><code>/food</code> füllt die Hungerbalken auf.</p>
+<p><code>/infinitefood</code> (de-)aktiviert Hunger.</p>
+<hr>
+<h2>Enderchest Command</h2>
+<p><code>/ec</code> oder <code>/enderchest</code></p>
+<hr>
+<h2>Gamodmode Command</h2>
+<h3>Aliasse</h3>
+<table>
+<thead>
+<tr>
+<th>Normal</th>
+<th>Kurz</th>
+<th>Zahl</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gamemode</td>
+<td>gm</td>
+<td>-</td>
+</tr>
+<tr>
+<td>survival</td>
+<td>s</td>
+<td>0</td>
+</tr>
+<tr>
+<td>creative</td>
+<td>c</td>
+<td>1</td>
+</tr>
+<tr>
+<td>adventure</td>
+<td>a</td>
+<td>2</td>
+</tr>
+<tr>
+<td>spectator</td>
+<td>w (watch)</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<h2>F3+n fix</h2>
+<p>um famose Bugs mit minecraft f3+n zu fixen (und das tippen zu vereinfachen)
+wird dein aktueller GameMode durch creative oder spectator (das gegenteil)
+ausgetauscht.</p>
+<hr>
+<h2>NPCs</h2>
+<p>Es gibt ein simpls NPC system:</p>
+<p><code>/npc add NAME</code></p>
+<p><code>/npc remove NAME</code></p>
+<p><code>/npc list</code></p>
+<hr>
+<h2>Bugreport</h2>
+<p>Wenn du ein Problem mit WGC findest kannst du es mittels <code>/wgcbug BESCHRIBUNG</code> melden</p>
+
+      </div>
+      <div class="page" id="performance">
+        <h1 class="heading">Performance</h1>
+        <h2>Performance beobachten</h2>
+<p><code>/ctps</code></p>
+<hr>
+<h2>TPS Limiter</h2>
+<p>(Nie wirklich fertig getestet und scheint ein paar eigenheiten zu haben)</p>
+<p><code>/settps (tps)</code></p>
+<hr>
+<h2>Performance verbesserung</h2>
+<p>WGC hat Lagreduzierungs-systeme eingebaut.</p>
+<h3>Befehle</h3>
+<table>
+<thead>
+<tr>
+<th>Befehl</th>
+<th>Effekt</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/lag</code></td>
+<td>Entferne Mobs* in deiner Welt</td>
+</tr>
+<tr>
+<td><code>/lag nether</code></td>
+<td>Entferne Mobs* in der Welt namens <code>Nether</code></td>
+</tr>
+<tr>
+<td><code>/lagall</code></td>
+<td>Entferne Mobs* in allen Welten</td>
+</tr>
+</tbody>
+</table>
+<p>* Mobs beziht sich auf alle Entities, die als nicht wertvoll erachtet werden (Armorstands z.b. sind wichtig, aber items und Zombies nicht)</p>
+<h3>Item Manager</h3>
+<p>Der Item Manager lässt Items schneller verschwinden und lässt nur Items in der nähe von Spielern droppen.</p>
+<p>Dies kann in der <a href="#config">Config</a> deaktiviert werden.</p>
+<h3>Notfall Lag Entefernung</h3>
+<p>Der notfall lag entferner erkennt (manchmal) wenn der Server sich kurz vor dem Absturz befindet und leitet
+gegenmaßnahmen ein:</p>
+<ul>
+<li>TNT entfernen</li>
+<li>TNT schaden berechnungen stoppen</li>
+<li>Physics deaktivieren</li>
+<li>Tacer hiden</li>
+<li>Gedropte Items entfernen</li>
+</ul>
+
+      </div>
+      <div class="page" id="pc">
+        <h1 class="heading">Portable Kanone</h1>
+        <p>Die glitzernde Melonen-Scheibe ist eine Portable TNT kanone (linksclick zum schießen).</p>
+<p>Mit <code>/pc MODE MODE-ARGS</code> kann sie eingestellt werden</p>
+<h2>Nutzen</h2>
+<ul>
+<li>Auszutesten wie viel ein WarGear aushält</li>
+<li>In einem Youtube video zeigen warum es im Zeitalter von SideStabs eine schlechte Idee
+ist 8 Kanonen nebeneinander zu plazieren.</li>
+<li>Stundenlang testblöcke beschießen anstatt produktiv zu seien</li>
+<li>Konzepte / delays zu testen (..)</li>
+</ul>
+<h2>Modes</h2>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Argument 1</th>
+<th>Argument 2</th>
+<th>Argument 3</th>
+<th>Argument 4</th>
+<th>Argument 5</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>stich / s</td>
+<td>tnt menge</td>
+<td>delay</td>
+<td>geschwindigkeit (&lt;3 = arti, &lt;5 = shotgun)</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>shotgun / sg</td>
+<td>tnt menge</td>
+<td>delay</td>
+<td>geschwindigkeit</td>
+<td>Streuung (1 ist sehr weit - 0.2 ist eine breitenstreu - 0.02 ist eine shotgun)</td>
+<td></td>
+</tr>
+<tr>
+<td>static / stc</td>
+<td>tnt menge</td>
+<td>minimales delay</td>
+<td>maximale delay abweichung</td>
+<td>geschwindigkeit</td>
+<td>Streuung</td>
+</tr>
+</tbody>
+</table>
+<p>Beispiele:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Stich</td>
+<td><code>/pc s 100 0 100</code></td>
+</tr>
+<tr>
+<td>Lupf</td>
+<td><code>/pc stc 45 5 10 5 0.05</code></td>
+</tr>
+<tr>
+<td>Streu</td>
+<td><code>/pc sg 50 5 4 0.2</code></td>
+</tr>
+</tbody>
+</table>
+
+      </div>
+      <div class="page" id="shears">
+        <h1 class="heading">Schere</h1>
+        <p>Die Schere (Item) hat eine Spezille Funktion in WGC</p>
+<h2>Bindings</h2>
+<table>
+<thead>
+<tr>
+<th>Maustaste</th>
+<th>Sneaken</th>
+<th>Ergebniss</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Links</td>
+<td>Nein</td>
+<td>Kanone Nachladen</td>
+</tr>
+<tr>
+<td>Links</td>
+<td>ja</td>
+<td>Fernzünde Ziel wählen</td>
+</tr>
+<tr>
+<td>Rechts</td>
+<td>Egal</td>
+<td>Fernzünden</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2>Nachladen</h2>
+<ol>
+<li>Wähle eine Kanone mit WGE aus und Belade sie.</li>
+<li><code>/simplereload copy</code> oder <code>/sr copy</code></li>
+<li>abfeuern</li>
+<li><code>/sr paste</code> oder über das Binding</li>
+</ol>
+<hr>
+<h2>Fernzünder</h2>
+<p>Du kannst erst ein Fernzündeziel wählen und es später aus der entfernung aktivieren.</p>
+<p>Da Minecraft nicht in der lage ist Plugins anständig Interaktionen zu simulieren
+und das Plugin somit workarounds benutzt gibt es manchmal verhaltensunterschiede mit
+Observern.</p>
+<h3>Ziele</h3>
+<ul>
+<li>Knöpfe</li>
+<li>Hebel</li>
+<li>(Fall-)Türen</li>
+<li>Fencegates</li>
+<li>Notenblöcke</li>
+</ul>
+<h3>Mehrere</h3>
+<p>Du kannst mehrer Fernzündeziele haben indem du Scheren mit
+unterschidlichen Namen (<code>/rename NAME</code>) hast.</p>
+
+      </div>
+      <div class="page" id="3_WGArea">
+        <h1 class="heading">WGArea</h1>
+        
+      </div>
+
+      <div class="page" id="area/manage">
+        <h1 class="heading">Management</h1>
+        <h2>Vordefinierte Regelwerke</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>t1</td>
+<td><a href="https://myplaypla.net/rules/tier-1">MyPlayPlanet t1</a></td>
+</tr>
+<tr>
+<td>t2</td>
+<td><a href="https://myplaypla.net/rules/tier-2">MyPlayPlanet t2</a></td>
+</tr>
+<tr>
+<td>t3</td>
+<td><a href="https://myplaypla.net/rules/tier-3">MyPlayPlanet t3</a></td>
+</tr>
+<tr>
+<td>wg</td>
+<td><a href="https://steamwar.de/spielmodi/wargear-regelwerk">SteamWar WarGear</a></td>
+</tr>
+<tr>
+<td>mwg</td>
+<td><a href="https://steamwar.de/spielmodi/miniwargear-regelwerk">SteamWar MiniWarGear</a></td>
+</tr>
+<tr>
+<td>micro</td>
+<td><a href="https://www.youtube.com/watch?v=cCgh2YWWcNk">Discowueste Micro</a></td>
+</tr>
+</tbody>
+</table>
+<h2>Erstellen</h2>
+<h3>Erstellen für ein vordefinirtes Regelwerk</h3>
+<p><code>/area create REGELWERK NAME</code></p>
+<h3>Erstellen für andere Regelwerke</h3>
+<p><code>/a create X Y Z EXT EXTFRONT EXTRA ENTFERNUNG NAME</code></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Erklärung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>X</td>
+<td>X-Größe (Breite)</td>
+</tr>
+<tr>
+<td>Y</td>
+<td>Y-Größe (Höhe)</td>
+</tr>
+<tr>
+<td>Z</td>
+<td>Z-Größe (Tiefe)</td>
+</tr>
+<tr>
+<td>EXT</td>
+<td>Ausfahrweite</td>
+</tr>
+<tr>
+<td>EXTFRONT</td>
+<td>Ausfahrmaße nach vorne</td>
+</tr>
+<tr>
+<td>EXTRA</td>
+<td>Extra größe (für sidestabs, backstabs, etc)</td>
+</tr>
+<tr>
+<td>ENTFERNUNG</td>
+<td>Abstand zwischen den WarGears</td>
+</tr>
+<tr>
+<td>NAME</td>
+<td>Name des Bereiches</td>
+</tr>
+</tbody>
+</table>
+<h2>(Ent-)Laden</h2>
+<p>Bereiche können entladen werden.
+Das Entladen von vielen Bereichen hilft mit Performance,
+allerdings verhalten sich entladene Bereiche wie ein ganz
+normaler Abschnitt der Welt.</p>
+<p>Entladen:     <code>/a unload NAME</code><br>
+Wieder laden: <code>/a load NAME</code></p>
+
+      </div>
+      <div class="page" id="area/basics">
+        <h1 class="heading">Basics</h1>
+        <p><code>/area</code> bzw die kurzform <code>/a</code> wird genutzt.</p>
+<h2>Tnt schadens steuerung</h2>
+<p>Es gibt eine Berichsweise tnt schadenseinstellung,
+die mit <code>/a tnt</code> gesteuert wird.</p>
+<p>Zudem gibt es <code>/a protect</code>, welches ein zusätzlicher schutz ist,
+der auch wenn <code>tnt</code> aktiv ist tnt schaden auf der bauseite verhindert
+und stattdessen eine Warnung ausgibt.</p>
+<h2>Freeze</h2>
+<p>Freeze kann mit <code>/a freeze</code> gesteuert werden.</p>
+<p>Freeze beinflusst:</p>
+<ul>
+<li>Neu plazierter sand fällt nicht runter</li>
+<li>Vorhandene Blöcke erhalten keine Blockupdates
+<ul>
+<li>Sand fällt nicht wenn man ihn updated</li>
+<li>Wasser fließt nicht wenn nebenstehende blöcke abgebaut werden</li>
+<li>redstone geht nicht</li>
+<li>uvm</li>
+</ul>
+</li>
+</ul>
+<h2>Aufbauen / Reparieren der arena</h2>
+<p>Wenn <code>worldtnt</code> aus ist sollte die arena nicht beschädigt werden.</p>
+<p>Wenn ihr eine eigene Arena verwendet müsst ihr sie manuell reparieren.</p>
+<p>Eingebaute presets können generiert werden mit:</p>
+<ul>
+<li><code>/a floor</code>: erzeuge einen Boden</li>
+<li><code>/a frame</code>: erzeuge einen Baurahmen</li>
+<li><code>/a reset</code>: setze einene Berich zurück (<a href="#area/backup">Backup</a>)</li>
+<li><code>/tb</code>: Generiere einene Testblock (<a href="#area/tb">mehr Infos</a>)</li>
+<li><code>/a clean</code>: entfernt Blöcke ausserhalb der Ausfahrmaße (herumgeflogener Sand, etc)</li>
+</ul>
+<h2>Themes</h2>
+<p>Man kann das Theme von Bereichen ändern, was die Farbpalette der von Plugin plazierten
+Blöcke und Arena-Theme-Blöcken in WGE-Schematics beeinflusst.</p>
+<p>Auflisten der verfügbaren Themes: <code>/a theme</code>.</p>
+<p>Theme ändern: <code>/a theme NAME</code>.</p>
+<p>Wenn dir kein Theme gefällt und du eine gute Idee hast kannst du es gerne im Discord
+teilen und wenn es gut aussieht ist es vielleicht in der nächsten Version enthalten.</p>
+
+      </div>
+      <div class="page" id="area/tb">
+        <h1 class="heading">Testblock</h1>
+        <p>Pasten: <code>/tb</code></p>
+<h2>Testblock modes</h2>
+<p><code>/tb set MODE_NAME/MODE_ID [EINSTELLUNGEN]</code></p>
+<table>
+<thead>
+<tr>
+<th>Id</th>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>simple</td>
+<td>Ein simpler Testblock im Area Theme</td>
+</tr>
+<tr>
+<td>3</td>
+<td>schem</td>
+<td>Schematic basiert; Benötigt einen Namen als Argument (Wenn ein Testblock mit dem Namen existiert wird dieser verwendet, sonst wird der aktuelle inhalt des Testblock bereichs unter dem Namen gespeichert und verwendet).</td>
+</tr>
+<tr>
+<td>4</td>
+<td>aimtrainer</td>
+<td>Zielübungen für Schwenkstichs, etc - Optionale Argumente: 1. Größe und 2. Menge</td>
+</tr>
+</tbody>
+</table>
+<h2>Schilde</h2>
+<p>Schilde können einmalig gepastet werden oder auch automatisch
+bei jedem Pasten mit erneuert werden.</p>
+<p>Schilde können aufgeräumt werden mit <code>/tb clean</code>.</p>
+<table>
+<thead>
+<tr>
+<th>.</th>
+<th>Befehl</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Einmalig</td>
+<td><code>/tb shield NAME</code> oder <code>/tb s NAME</code></td>
+</tr>
+<tr>
+<td>Anhängen</td>
+<td><code>/tb add NAME</code></td>
+</tr>
+<tr>
+<td>Abhängen</td>
+<td><code>/tb removeall</code></td>
+</tr>
+</tbody>
+</table>
+<p>Schilde (die großbuchstaben vom namen reichen):</p>
+<ul>
+<li>ArtiSchild [TIEFE]  - tiefe kann auch negativ seien</li>
+<li>Kiesschild</li>
+<li>wall - eine massieve wand auf den maximalen Ausfahrmaßen</li>
+<li>Massivschild - (Blickrichtung steuert die Seite)</li>
+<li>ArtoX - (Blickrichtung)</li>
+<li>ArtoX+ - (Blickrichtung) Artox mit Blocklager-Simulation</li>
+</ul>
+<h2>XRay / Durchleuchten</h2>
+<p>Tausche Luft und alles andere jeweils aus (z.b. zu glas und glowstone) um den schaden besser zu inspizieren.</p>
+<p><code>/tb xray</code> oder <code>/tb xray MATERIAL MATERIAL</code></p>
+<h2>Score</h2>
+<p><code>/tb score</code> gibt Statistiken zu dem Schaden an:</p>
+<ul>
+<li>Zerstörte Blöcke (Prozent und Zahl)</li>
+<li>Abdeckungs Score (wie viel könnte noch leben)</li>
+<li>Wassermenge verbleibend</li>
+<li>Ein Score</li>
+</ul>
+<p>Es funktioniert am besten mit einem vollständigem (mode 2) Testblock.</p>
+<p>Es ist primär dafür gedacht Schwenkstichs, Lupfs, etc simpel bewerten zu können und
+grob zu vergleichen. Allerdings ist das Ergebnis sowohl dank der TNT-Physics als auch
+aufgrund der Abdeckungs-Berechnungs-Methode nicht als zu akkurat.</p>
+
+      </div>
+      <div class="page" id="area/backup">
+        <h1 class="heading">Backup</h1>
+        <p>Standardmäßig machen Bereiche alle ~15min sowie vor resets ein Backup.</p>
+<p>Backups werden regelmäßig automatisch aufgeräumt (entfernt).</p>
+<p>Bitte vertraut nicht zu sehr auf das System - es scheint zu funktionieren,
+aber bitte vertraut nicht zu sehr darauf.</p>
+<h2>Feature (de-)aktivieren</h2>
+<p><code>/a bu ON</code></p>
+<p><code>/a bu off</code></p>
+<h2>Backup laden</h2>
+<p><code>/a bu</code></p>
+<h2>Manuelles backup</h2>
+<p><code>/a bu save</code></p>
+
+      </div>
+      <div class="page" id="tracer">
+        <h1 class="heading">Tracer</h1>
+        <h2>Basics</h2>
+<table>
+<thead>
+<tr>
+<th>Befehl</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/trace start</code></td>
+<td>aufzeichnung beginnen</td>
+</tr>
+<tr>
+<td><code>/trace stop</code></td>
+<td>aufzeichnung beenden</td>
+</tr>
+<tr>
+<td><code>/trace show</code></td>
+<td>positionen anzeigen</td>
+</tr>
+<tr>
+<td><code>/trace hide</code></td>
+<td>positionen verstecken</td>
+</tr>
+<tr>
+<td><code>/trace clear</code></td>
+<td>alle vorhandenen Punkt löschen</td>
+</tr>
+<tr>
+<td><code>/trace end</code></td>
+<td>Kurz für: <code>stop</code>, <code>hide</code>, <code>clear</code></td>
+</tr>
+</tbody>
+</table>
+<h2>Modes</h2>
+<p><code>/trace mode MODE</code><br>
+Hinweis: Ohne die richtigen <a href="#config">config-einstellung</a> gehen bei Mode-Wechseln meist Details
+verloren!</p>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Argumente</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ExplosionPoint</td>
+<td></td>
+<td>Eine temporäre Markierung am Explosionsort</td>
+</tr>
+<tr>
+<td>trail</td>
+<td></td>
+<td>Ein temporäre Flugbahn Markierung</td>
+</tr>
+<tr>
+<td>OVerview</td>
+<td>v r</td>
+<td>Eine stark reduzierter Normal-Mode</td>
+</tr>
+<tr>
+<td>NORMal</td>
+<td>v r</td>
+<td>Die Positionen von TNT zu den Ticks.</td>
+</tr>
+<tr>
+<td>dot</td>
+<td>v r d</td>
+<td>Norm + Update Positionen (mit filtern)</td>
+</tr>
+<tr>
+<td>alldot</td>
+<td>v r</td>
+<td>dot ohne jegliche filter (LAGGY!)</td>
+</tr>
+<tr>
+<td>line</td>
+<td>v r l d</td>
+<td>dot + Linien zwischen den Update-Punkten (mit filtern)</td>
+</tr>
+<tr>
+<td>allline</td>
+<td>v r l</td>
+<td>line ohne filter (SEHR LAGGY!)</td>
+</tr>
+</tbody>
+</table>
+<p>alle Argumente sind optional und Zahlen!</p>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>v</td>
+<td>View-distance</td>
+<td>Die sichtweite (Positionen ausserhalb werden nicht angezeigt) (in Blöcken² (z.b. 2000))</td>
+</tr>
+<tr>
+<td>r</td>
+<td>Refresh-Rate</td>
+<td>Wie oft die Positionen geupdated werden (in Gameticks (z.b. 40))</td>
+</tr>
+<tr>
+<td>l</td>
+<td>Line-width</td>
+<td>Abstand zwischen Blöcken beim Line-Mode (in Blöcken (z.b. 1))</td>
+</tr>
+<tr>
+<td>d</td>
+<td>reDuction</td>
+<td>Filter-Stärke (in Blöcken abstand (z.b. 0.2))</td>
+</tr>
+</tbody>
+</table>
+
+      </div>
+      <div class="page" id="4_WGFight">
+        <h1 class="heading">WGFight</h1>
+        
+      </div>
+
+      <div class="page" id="fight/basics">
+        <h1 class="heading">Fight Basics</h1>
+        <table>
+<thead>
+<tr>
+<th>Aktion</th>
+<th>Befehl</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Team beitreten</td>
+<td><code>/fight Blue</code> oder <code>/fight Red</code>.</td>
+</tr>
+<tr>
+<td>Team verlassen</td>
+<td><code>/fight leave</code>.</td>
+</tr>
+<tr>
+<td>Starten</td>
+<td><code>/fight start</code>.</td>
+</tr>
+<tr>
+<td>Abbrechen</td>
+<td><code>/fight cancel</code></td>
+</tr>
+</tbody>
+</table>
+<p>WICHTIG: Erst ein <a href="#fight/settings">Inventar festlegen</a>!</p>
+
+      </div>
+      <div class="page" id="fight/settings">
+        <h1 class="heading">Fight Einstellungen</h1>
+        <p><code>/fight set ..</code></p>
+<table>
+<thead>
+<tr>
+<th>..</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>inventory</td>
+<td>Speicher dein aktuelles Inventar als das Spawn-Inventar ab.</td>
+</tr>
+<tr>
+<td>countdown GAMETICKS</td>
+<td>Setze den Start-Countdown</td>
+</tr>
+</tbody>
+</table>
+
+      </div>
+      <div class="page" id="fight/mods">
+        <h1 class="heading">Fight Modifikatoren</h1>
+        <p>Fight Modifikatoren (Mods) modifizieren wie der Fight abläuft oder Sachen sich
+verhalten.</p>
+<h2>Bedienung</h2>
+<p>Auflisten der aktiven: <code>/fight MODifier list</code><br>
+Hinzufügen: <code>/fight mod add NAME [OPTIONEN]</code><br>
+Entfernen: <code>/fight mod remove NAME</code><br>
+Alle Entfernen: <code>/fight mod clear</code></p>
+<h2>Erweiterbarkeit</h2>
+<p>Es können mehr Mods von anderen Plugins über die API hinzugefügt werden.<br>
+Um das Haupt-Plugin für Homeserver klein zu halten habe ich viele Mods
+ausgelagert in das <code>AdvancedWGCFight</code> Plugin - allerdings gibt es villeicht
+auch welche von der Community oder ihr schreibt euch selber welche.</p>
+<h2>Vorhandene Mods</h2>
+<h3>In WGC</h3>
+<table>
+<thead>
+<tr>
+<th>Mod</th>
+<th>Inspiration</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bomber</td>
+<td>Europsuchtis</td>
+<td>Es fällt regelmäßig TNT vom Himmel</td>
+</tr>
+<tr>
+<td><a href="https://www.youtube.com/watch?v=x74tTuY-1iM">Rising</a></td>
+<td>GearForge</td>
+<td>Es steigt Wasser (oder was anderen) vom Boden (einfach mal <code>WarGear Rising Tides</code> googeln)</td>
+</tr>
+</tbody>
+</table>
+<h2>Im AdvancedWGCFight Plugin</h2>
+<table>
+<thead>
+<tr>
+<th>Mod</th>
+<th>Inspiration</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://forum.myplayplanet.net/index.php?thread/3582-event-endergear-31-07-01-08">Endergear</a></td>
+<td>MyPlayPlanet</td>
+<td>Inventare, Positionen, etc werden regelmäßig getauscht</td>
+</tr>
+<tr>
+<td>Explosivewaterremover</td>
+<td></td>
+<td>Bei der Wasserentfernung explodiert es noch einmal.</td>
+</tr>
+<tr>
+<td>Glowingplayer</td>
+<td></td>
+<td>Alle Spieler haben den Glowing Effekt.</td>
+</tr>
+<tr>
+<td>Glowingtnt</td>
+<td></td>
+<td>Jedes tnt hat den Glowing Effekt.</td>
+</tr>
+<tr>
+<td>Icestorm</td>
+<td></td>
+<td>Es schneit Schneebälle und Eisblöcke.</td>
+</tr>
+<tr>
+<td>NoGravTnt</td>
+<td></td>
+<td>TNT hat keine Gravitation (auch beim zünden)</td>
+</tr>
+<tr>
+<td>Randomizer</td>
+<td></td>
+<td>Alle paar ticks passiert irgendwas (bislang nicht viele Events).</td>
+</tr>
+<tr>
+<td>SackRace</td>
+<td></td>
+<td>Sackhüpfen</td>
+</tr>
+<tr>
+<td>Silvester</td>
+<td></td>
+<td>Explosive Silvesterrakten (war mehr ein witz zu silvester denn was ernstes)</td>
+</tr>
+<tr>
+<td>SpaceInvaders</td>
+<td></td>
+<td>Bomber mit einer schönen Animation und anderem Muster</td>
+</tr>
+</tbody>
+</table>
+
+      </div>
+      <div class="page" id="5_WGEdit">
+        <h1 class="heading">WGEdit</h1>
+        
+      </div>
+
+      <div class="page" id="wge/basics">
+        <h1 class="heading">WGE Basics</h1>
+        <p>Wenn du WorldEdit nicht Bedienen kannst bist du hier falsch!</p>
+<p>WGE ist an sich nur ein interface für das interne WorldEdit mit ein paar Dingen extra die ich ganz praktisch fand.</p>
+<p><strong>Es ist nicht Nutzerfreundlich!</strong> Nutzung auf eigene Gefahr.</p>
+<hr>
+<h2>Auswahl</h2>
+<p>Statt der Holzaxt benutzt man eine Goldhacke/ Goldsense/ Was auch immer es aktuell auf Deutsch heißt.</p>
+<hr>
+<hr>
+<h2>Legitime Materialien</h2>
+<ul>
+<li>Bukkit Namen (<code>stone</code>, <code>red_stained_glass</code>, etc)</li>
+<li>Simulierte Ids (0=air, 121=endstone, etc) (nicht 100% Originalgetreu - z.b. Pinker Teppich=-17110)</li>
+<li>WGE Gruppen:
+- Tech (alles redstone artige wie Pistons, Redstone, NoteBlock, etc)
+- Sign (alle Schilder)</li>
+<li>WGE Abkürzungen:
+- End = EndStone</li>
+</ul>
+
+      </div>
+      <div class="page" id="wge/simple">
+        <h1 class="heading">Simple Befehle</h1>
+        <table>
+<thead>
+<tr>
+<th>Befehle</th>
+<th>WorldEdit equivalent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/(air</td>
+<td>//set 0</td>
+</tr>
+<tr>
+<td>/(copy</td>
+<td>//copy</td>
+</tr>
+<tr>
+<td>/(cut</td>
+<td>//copy //set 0</td>
+</tr>
+<tr>
+<td>/(expand 1</td>
+<td>//expand 1</td>
+</tr>
+<tr>
+<td>/(fill stone</td>
+<td>//rep air stone</td>
+</tr>
+<tr>
+<td>/(paste</td>
+<td>//paste</td>
+</tr>
+<tr>
+<td>/(posa</td>
+<td>//pos1</td>
+</tr>
+<tr>
+<td>/(posb</td>
+<td>//pos2</td>
+</tr>
+<tr>
+<td>/(rep stone,glass</td>
+<td>//rep stone,glass</td>
+</tr>
+<tr>
+<td>/(rep 0,water 121</td>
+<td>//rep air,water endstone</td>
+</tr>
+<tr>
+<td>/(repnear ..</td>
+<td>//replacenear ..</td>
+</tr>
+<tr>
+<td>/(set stone</td>
+<td>//set stone</td>
+</tr>
+<tr>
+<td>/(wall stone</td>
+<td>//wall stone</td>
+</tr>
+</tbody>
+</table>
+
+      </div>
+      <div class="page" id="wge/clipboard">
+        <h1 class="heading">WGE Clipboard</h1>
+        <p><code>/(cb</code> oder <code>/(clipboard</code></p>
+<table>
+<thead>
+<tr>
+<th>Befehl</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>size</td>
+<td>Größe des Clipboards (debug)</td>
+</tr>
+<tr>
+<td>drain</td>
+<td>Entferne Wasser</td>
+</tr>
+<tr>
+<td>os0</td>
+<td>Entferne das Paste Offset (debug)</td>
+</tr>
+<tr>
+<td>unload</td>
+<td>Uncache das Clipboard (debug)</td>
+</tr>
+<tr>
+<td>d2</td>
+<td>(debug)</td>
+</tr>
+</tbody>
+</table>
+<h2>Maskieren</h2>
+<p>Clipbaords können Maskiert werden um bestimmte Dinge nicht mitzupasten.</p>
+<table>
+<thead>
+<tr>
+<th>Befehl</th>
+<th>Effekt</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/(cb mask stone</code></td>
+<td>Tauscht stein durch Maske aus.</td>
+</tr>
+<tr>
+<td><code>/(cb invmask stone</code></td>
+<td>Tauscht alles ausser Stein durch Maske aus.</td>
+</tr>
+<tr>
+<td><code>/(cb unmask stone</code></td>
+<td>Tauscht Maske durch Stein aus.</td>
+</tr>
+</tbody>
+</table>
+
+      </div>
+      <div class="page" id="wge/diff">
+        <h1 class="heading">WGE Diff</h1>
+        <p><code>/(diff</code></p>
+<p>Erzeuge einen diff zwischen deinem Clipboard(+) und einer Schematic(-).</p>
+<p>Primär existent um Features für WGGit zu testen.</p>
+
+      </div>
+      <div class="page" id="wge/fix">
+        <h1 class="heading">WGE Fix</h1>
+        <p><code>/(fix</code></p>
+<p>Versucht WorldEdit probleme zu beheben:</p>
+<ul>
+<li>Falsch verbundene Blöcke</li>
+<li>unsichtbare Mauern</li>
+</ul>
+
+      </div>
+      <div class="page" id="wge/resize">
+        <h1 class="heading">WGE Resize</h1>
+        <p>Skaliere gebilde um.<br>
+Gut geeingnet um MWG remakes von WGS zu machen, etc (als vorlage, aber mit etwas probieren
+und Übung muss man am Design manchmal garnichts mehr ändern)</p>
+<h2>Syntax</h2>
+<p><code>/(resize X Y Z</code><br>
+<code>/(resize (WG/MWG/T1/T2/T3)</code></p>
+<h2>Tricks</h2>
+<ul>
+<li>Vergrößer die Auswahl der Vorlage in die 6 Richtungen (nicht zwingend alle) für mehr Detail</li>
+<li>wenn du mit einer Hälfte des Ergebnisses einer Symbetischen Vorlage zufrieden bist flip einfach.</li>
+<li>...</li>
+</ul>
+
+      </div>
+      <div class="page" id="wge/schem">
+        <h1 class="heading">WGE Schem</h1>
+        <p>Nicht fertiges schem System.</p>
+
+      </div>
+      <div class="page" id="wge/slab">
+        <h1 class="heading">WGE Slab</h1>
+        <p><code>/(slab glass</code></p>
+<p>Plaziere Slabs automatisch dort wo sie benötigt werden (hochlaufendes redstone).
+(Warnung: es berechnet pistons nicht mit ein -&gt; kann sachen zupanzern)</p>
+
+      </div>
+      <div class="page" id="wge/techhide">
+        <h1 class="heading">WGE Techhide</h1>
+        <p><code>/(techhide</code></p>
+<p>Replace Technik (ein wenig intelligenter als <code>//rep redstone,repeater endstone</code>, da es
+umgebene Blöcke usw mit einberechnet)</p>
+
+      </div>
+      <div class="page" id="wge/xray">
+        <h1 class="heading">WGE XRay</h1>
+        <p><code>/(xray glowstone glass</code>: tausche luft durch glowstone und alles andere durch Glas aus.</p>
+<p><code>/tb xray glowstone glass</code>: das gliche, bloß für den testblock statt der auswahl.</p>
+
+      </div>
+      <div class="page" id="defence">
+        <h1 class="heading">WGCDefence</h1>
+        <p>WGC hat schutzsysteme / verteidigungs-systeme für Teamserver eingebaut.</p>
+<h2>AuthMe</h2>
+<p>Fragt beim Einloggen nach einem eingerichteten Password um Identitätsfälschung auf
+cracked / offline servern zu erschweren.</p>
+<p>Dieses AuthMe hat mehrere Operations-modi:</p>
+<ul>
+<li>off</li>
+<li>once per ip</li>
+<li>every login</li>
+</ul>
+<h2>Discovery Tracker</h2>
+<p>Kann in der <a href="#config">Config</a> aktiviert werden.</p>
+<p>Sendet wenn eine neue IP den Server in die Serverliste aufnimmt eine Nachricht in den
+eingerichteten Discord Channel.</p>
+<h2>Root permission</h2>
+<p>Spieler können die <code>root</code> permission über <a href="#files">config Dateien</a> erhalten und sind somit geschützt
+gegenüber kicks, etc.</p>
+<h2>Forcekick</h2>
+<p><code>/wgc crash NAME</code> crasht minecraft</p>
+<h2>Liste deine IPs auf</h2>
+<p>Dies kann gut sein um festzustellen ob jemand anderes sich als dich ausgegeben hat.</p>
+<p><code>/wgc defence ips</code> (die liste ist nicht zwingen vollständig!)</p>
+
+      </div>
+
+      <div class="page" id="7_Verwaltung">
+        <h1 class="heading">Verwaltung</h1>
+        
+      </div>
+
+      <div class="page" id="setup">
+        <h1 class="heading">Setup</h1>
+        <table>
+<thead>
+<tr>
+<th>Prefix</th>
+<th>Zielsysteme</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Widows:</td>
+<td>Betrifft Windows 10/11 desktop nutzer</td>
+</tr>
+<tr>
+<td>Debian:</td>
+<td>Betrifft Debian basierte Linux Distros (Debian, Ubuntu, Pop, Mint, etc)</td>
+</tr>
+<tr>
+<td>Linux:</td>
+<td>Betrifft alle Linux systeme</td>
+</tr>
+<tr>
+<td>Other:</td>
+<td>Betriebsysteme die nicht anderweitig genannt sind</td>
+</tr>
+</tbody>
+</table>
+<p><code>Texte wie dieser sind jetweder terminalbefehle, datinamen oder texte zum kopieren</code>
+(und du kannst <a href="https://praxistipps.chip.de/tastenkombination-kopieren-und-einfuegen_13193">Kopieren</a> statt abzutippen!).<br>
+Bitte das Terminal bis zum ende offen lassen, da die Befehle aufeinander aufbauen!</p>
+<p>Wie man ein Terminal öffnet:
+<a href="https://www.wikihow.com/Open-Terminal-in-Windows">Windows</a>
+<a href="https://www.wikihow.com/Open-a-Terminal-Window-in-Ubuntu">Linux (Gnome)</a></p>
+<p>Ein Texteditor für das Linux Terminal: <a href="https://wiki.ubuntuusers.de/Nano/">Nano</a> (&lt;f3&gt;: speichern, &lt;f2&gt; schließen, <code>nano datei.txt</code>: datei öffnen)</p>
+<h2>Minecraft Server Einrichten</h2>
+<h3>Java installieren</h3>
+<p>Debian: <code>sudo apt-get install default-jre</code><br>
+<a href="https://www.java.com/de/download/manual.jsp">Other</a></p>
+<h3>Bukkit downloaden</h3>
+<p>Zuerst musst du dich entscheiden welche Serversoftware du nutzen möchtest.</p>
+<p>Wenn du WarGears für einen spezifischen Server bauen willst nutze am besten die
+gleiche wie der Server.</p>
+<p><strong>Der Server muss für Minecraft Version 15 sein</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Server</th>
+<th>Anmerkung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://getbukkit.org/download/spigot">Spigot</a></td>
+<td><a href="https://steamwar.de/">SteamWar</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://papermc.io/legacy">PaperMc</a></td>
+<td><a href="https://myplaypla.net/">MPP</a></td>
+<td>PaperMc ist bedeuted performanter als Spigot.</td>
+</tr>
+</tbody>
+</table>
+<p>Linux:</p>
+<ol>
+<li>erstelle dir einene Ordner für den Server: <code>mkdir minecraft-server</code></li>
+<li>gehe in den Ordner: <code>cd minecraft-server</code></li>
+<li>Downloade einen Server:
+<ul>
+<li>Spigot: <code>curl https://cdn.getbukkit.org/spigot/spigot-1.15.2.jar -o spigot.jar</code></li>
+<li>PaperMc: <code>curl https://papermc.io/api/v2/projects/paper/versions/1.15.2/builds/393/downloads/paper-1.15.2-393.jar -o paper.jar</code></li>
+</ul>
+</li>
+<li>Akzeptiere die <a href="https://www.minecraft.net/en-us/eula">Minecraft EULA</a>: <code>echo 'eula=true' &gt; eula.txt</code></li>
+</ol>
+<p>Windows:</p>
+<ol>
+<li>Öffne den explorer</li>
+<li><a href="https://www.giga.de/tipp/windows-10-dateiendungen-anzeigen-so-gehts/">Aktiviere Dateiendungen</a></li>
+<li>Suche dir eine schöne Stelle und erstelle einen Ordner</li>
+<li>Öffne den Ordner</li>
+<li>Downloade einen Server und lege die Jar Datei in den Ordner
+<ul>
+<li><a href="https://getbukkit.org/download/spigot">Spigot</a></li>
+<li><a href="https://papermc.io/legacy">PaperMc</a></li>
+</ul>
+</li>
+<li>Akzeptiere die <a href="https://www.minecraft.net/en-us/eula">Minecraft EULA</a>:
+<ol>
+<li>Rechtsclick &gt; Neue Datei &gt; Textdokument</li>
+<li>Bennene die Datei <code>Eula.txt</code></li>
+<li>Öffne die Datei</li>
+<li>Schreibe <code>eula=true</code> in die Datei</li>
+<li>Speicher die datei (strg &amp; s gleichzeitig drücken)</li>
+<li>Schliße den Texteditor</li>
+</ol>
+</li>
+</ol>
+<h3>Eine Server-Start Datei erstellen</h3>
+<p>Linux:</p>
+<ol>
+<li>Schreibe ein Script: <code>echo -e '#!/bin/bash\nRAM=1\njava -Xms${RAM}g -Xmx${RAM}g -DIReallyKnowWhatIAmDoingISwear -jar *.jar nogui' &gt; start.sh</code></li>
+<li>Mache es ausführbar: <code>chmod +x start.sh</code></li>
+</ol>
+<p>Windows:</p>
+<ol>
+<li>Rechtsclick &gt; Neue Datei &gt; Textdokument</li>
+<li>Bennene die Datei <code>start.bat</code></li>
+<li>Öffne die Datei</li>
+<li>Schreibe den Nachfolgenden text ion die Datei: <code>java -Xms1g -Xmx1g -DIReallyKnowWhatIAmDoingISwear -jar server.jar</code> (statt <code>java.jar</code> den namen der datei)</li>
+<li>Speicher die datei (strg &amp; s gleichzeitig drücken)</li>
+<li>Schliße den Texteditor</li>
+</ol>
+<h3>Generieren der Bukkit Dateien</h3>
+<ol>
+<li>Starte den Server:
+<ul>
+<li>Windows: doppelclick auf <code>start.bat</code></li>
+<li>Linux: <code>./start.sh</code></li>
+</ul>
+</li>
+<li>Warte bis der Server fertig ist</li>
+<li>Schreibe <code>op USERNAME</code> um dir für später rechte zu geben</li>
+<li>Jetzt ist ein guter Zeitpunkt um eine <a href="https://minecraft.fandom.com/de/wiki/Befehl/whitelist">Whitelist einzurichten</a> (die Befehle ohne <code>/</code> ausführen)</li>
+<li>Mob spawnen deaktivieren: <code>gamerule doMobSpawning false</code></li>
+<li>Schreibe <code>stop</code> um den server herunterzufahren</li>
+</ol>
+<h3>Simple Server einstellungen</h3>
+<h4>Bowfights ermöglichen</h4>
+<p>Die <code>spigot.yml</code> bearbeiten und <code>players</code> als unterpuket von <code>entity-tracking-range</code>
+auf mindestenst <code>150</code> setzen.</p>
+<h4>Offline Modus</h4>
+<p><strong>Hinweis</strong>: Dies wird benötigt um ohne internetverbindung auf einen lokalen server zu gehen,
+allerdings sollte ein server mit dieser einstllung normalerweise nicht öffentlich
+erreichbar seien, da sich jeder als admin anmelden kann ohne das password zu kennen.</p>
+<p>Tausche <code>online-mode=true</code> in der <code>server.properties</code> durch <code>online-mode=false</code> aus.</p>
+<h3>Plugins installieren</h3>
+<p>Du kannst einfach die <code>.jar</code> Dateien für 1.15 <strong>denen du vertraust</strong> in dem <code>plugins</code> Ordner ablegen.</p>
+<p>Beliebte ergänzende Plugins:</p>
+<ul>
+<li>[FAWE][] oder [WE][]</li>
+</ul>
+<h2>Bedienung</h2>
+<h3>Starten</h3>
+<p>Linux: einfach wieder mit <code>cd DATEIPFAD</code> in den ordner gehen und mit <code>./start.sh</code> starten</p>
+<p>Windows: Den ordner öffnen und <code>start.bat</code> doppelclicken</p>
+<h3>Beitreten</h3>
+<p>Homeserver: Mit der korrekten Minecraft-Version der server-ip <code>localhost</code> joinen.</p>
+<p>Server: Finde die öffentliche ip heraus..</p>
+<h3>Stoppen</h3>
+<p><code>stop</code> in das terminal eingeben</p>
+
+      </div>
+      <div class="page" id="config">
+        <h1 class="heading">Config</h1>
+        <p><strong>Datei</strong>: <code>plugins/WarGearCore/wgc.cfg</code></p>
+<p>Es handelt sich hierbei um eine <a href="https://de.wikipedia.org/wiki/YAML">YAML</a> Datei.</p>
+<h2>ads</h2>
+<p>Wenn diese einstllung aktiviert ist wird beim hochfahren die <code>plugins/WarGearCore/ads.txt</code> Datei
+eingelesen und regelmäßig eine ihrer Zeilen in den Chat geschickt.</p>
+<h2>advancedScoreboard</h2>
+<p>Das normale Scoreboard ist das Ergebniss einer Community-Umfrage, allerdings bevorzuge ich
+es mehr infos zu haben, was hiermit ermöglicht wird.</p>
+<h2>autoBugReport</h2>
+<p>Wenn ein Problem in dem Plugin auftritt können eine Menge an debuginformationen
+gesammelt werden, welche helfen das Problem zu beheben.</p>
+<p>Diese einstellung versucht automatisch fehler zu erkennen, daten zu sammeln und
+sendet anschlißend eine zensierte version dieser Daten an den entwickler.</p>
+<p>Auch wenn es zensiert ist ist diese einstellung standardmäßig aus, da datensammlung
+nie opt-out seien sollte. Wenn dir das Projekt gefällt und du helfen willst es zu
+verbessern aktiviere es gerne.</p>
+<h2>betterTntKillTracker</h2>
+<p>Ein Experimentelles System, welches versucht redstone-kanonen verursachte
+Kills nachzuvollziehen.</p>
+<p>Da dies eine Menge an extra resourcen benötigt (für nedes redstones speichern
+wer es aktiviert hat, etc) und noch nicht so ganz ausgereift ist empfiehlt sich
+dieses feature nur wenn ihr eine Überflüssige ressourcen habt.</p>
+<h2>command.wgcbug.activeScan</h2>
+<p>Ein experimentelles Feature, welches das Ergebniss von einem Funktionstest des
+gesammten Plugins automatisch an Bug reports anhängt.</p>
+<h2>customchat</h2>
+<p>Dies (de-)aktiviert das Custom-Chat Feature.</p>
+<h2>customtab</h2>
+<p>(De-)aktiviere die Custom tabbar.</p>
+<p>Vorallem da um kollisionen mit anderen Plugins zu vermeiden.</p>
+<h2>decentral</h2>
+<p>Macht im augenblick noch garnichts.</p>
+<p>Wurde bislang nur zum testen des decentral-WGC systems genutzt und
+wird vermutlich auch wenn es fertig wird dafür genutzt, bis dahin
+solltet ihr allerdings die einstellungen einfach so (aus) lassen.</p>
+<h2>defence</h2>
+<p>(De-)aktivieren von WGCDefence Features.</p>
+<h2>discord.wh</h2>
+<p>Dies ist eine Liste von <a href="https://support.discord.com/hc/de/articles/228383668-Einleitung-in-Webhooks">Discord webhooks</a></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Funktion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>notes</td>
+<td>Wird für den <code>/dcn</code> Befehl genutzt</td>
+</tr>
+<tr>
+<td>log</td>
+<td>Log nachrichten des Discord-Log features landen hier</td>
+</tr>
+</tbody>
+</table>
+<h2>discoverytracker</h2>
+<p>Dies erlaubt WGCDefence frühzeitig zu warnen wenn jemand unbekanntes (bzw eine unbekannte ip)
+den Server in ihre Serverliste aufnimmt.</p>
+<p>Benötigt <code>serverListPlus: true</code></p>
+<h2>itemDropManager</h2>
+<p>(De-)aktiviert den Item-Drop manager.</p>
+<p>Der itemDropManager verringert die serverauslastung durch die verminderung von Drops:</p>
+<ul>
+<li>items droppen nur wenn ein spiler nahe dran ist</li>
+<li>items despawnen schneller</li>
+</ul>
+<h2>join.flag</h2>
+<p>Lege den Text für die Join-Flagge fest.<br>
+Bespiel: <code>flag: WT</code></p>
+<h2>msg</h2>
+<p>Tausche namen/ texte aus:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>prefix.1</td>
+<td>Erster teil von Plugin-Modul namen (default: WG)</td>
+</tr>
+<tr>
+<td>prefix.2.core</td>
+<td>Zweiter teil vom WGCore subplugin namen</td>
+</tr>
+<tr>
+<td>prefix.2.area</td>
+<td>.</td>
+</tr>
+<tr>
+<td>prefix.2.defence</td>
+<td>.</td>
+</tr>
+<tr>
+<td>prefix.2.fight</td>
+<td>.</td>
+</tr>
+<tr>
+<td>prefix.2.edit</td>
+<td>.</td>
+</tr>
+<tr>
+<td>prefix.2.script</td>
+<td>.</td>
+</tr>
+<tr>
+<td>area.sb.bu.status</td>
+<td>Text im scoreboard für den Backup status (<code>'§6Auto-Bu: '</code>)</td>
+</tr>
+<tr>
+<td>area.sb.bu.last</td>
+<td>.. Backup zeit</td>
+</tr>
+<tr>
+<td>area.sb.freeze</td>
+<td>.. Freeze status</td>
+</tr>
+<tr>
+<td>area.sb.off</td>
+<td>Text für off</td>
+</tr>
+<tr>
+<td>area.sb.on</td>
+<td>.. on</td>
+</tr>
+<tr>
+<td>area.sb.prefix.name</td>
+<td>Area Namensprefix (gut für colorcodes)</td>
+</tr>
+<tr>
+<td>area.sb.protection</td>
+<td>text für area-protect status</td>
+</tr>
+<tr>
+<td>area.sb.tnt</td>
+<td>.. tnt schaden status</td>
+</tr>
+<tr>
+<td>area.sb.trace.status</td>
+<td>.. trace status</td>
+</tr>
+<tr>
+<td>area.sb.waterremover</td>
+<td>.. waterrmover status</td>
+</tr>
+</tbody>
+</table>
+<h2>noDefaultScoreboard</h2>
+<p>Deatktiviert das Scoreboard ausserhalb von Bereichen.</p>
+<p>Empfehlenswert wenn Minigame-Plugins aktiv sind.</p>
+<h2>server.debug</h2>
+<p>Dies ist für Developer und ändert error-handling, permissions, etc.</p>
+<p>Wenn du am Code arbeitest schalte es gerne an, aber sonst lass es
+einfach aus.</p>
+<h2>server.name</h2>
+<p>Dies ist der Name deines Servers.<br>
+Dies wird für Join-Nachrichten, Logs, Scoreboards und ähnliches benutzt.</p>
+<h2>serverlistplus</h2>
+<p>Diese Feature ändert das Aussehen des Servers in einer Serverliste:</p>
+<ul>
+<li>Das Bild ist ein zufälliges 64x64 png aus dem <code>plugins/WarGearCore/servericons</code> Ordner</li>
+<li>WGC-Defence kann warnen wenn neue Computer (ips) den Server in ihre Serverliste aufnehmen
+(discoverytracker option)</li>
+</ul>
+<h2>tracer.noDataLossOnModeswitch</h2>
+<p>Im normalfall speichert der tracer nicht alle daten, sondern nur was für den
+aktuellen mode benötigt wird. Somit verliert man infos wenn man den mode
+nachträglich switcht.</p>
+<p>Mit dieser Einstellung werden die Daten nicht reduziert und es ist möglich
+nachträglich den detailgrad zu erhöhen.</p>
+
+      </div>
+      <div class="page" id="files">
+        <h1 class="heading">Dateien</h1>
+        <p>WGC erstellt eine menge an Ordnern und Dateien in <code>plugins/WarGearCore</code>:</p>
+<p><strong>Bitte bearbeite keiner dieser Dateien während das Plugin aktiv ist!</strong></p>
+<h2>areas</h2>
+<p>Hier werde areas gespeichert.</p>
+<p>Die <code>.area</code> Dateien sind im eifache YAML Dateien, allrdings sind sie
+nicht zum manuellen bearbeiten gedacht.</p>
+<p>Wenn du dateien hier löschst lösche auch <code>plugins/WarGearCore/cache.yml</code>.</p>
+<h2>backup</h2>
+<p>in diesem Ordner befinden sich Ordner, deren namen Unix-Timestamps repräsentieren.</p>
+<p>Innerhalb dieser Ordner befinden sich schem dateien mit namen von Berichen.</p>
+<h2>extensions</h2>
+<p>Dies war der Ordner für WGC-Extension Ordner/Dateien und ist im Augenblick ungenutzt.</p>
+<h2>inventories</h2>
+<p>Dieser ordner enthält gespicherte Fight-Inventare.</p>
+<h2>langs</h2>
+<p>Dieser ordner hatte früher sprachpakete enthalten und sollte eigentlich nicht mehr auftauchen.</p>
+<h2>schem</h2>
+<p>Hier speichert WGEdit die Nutzergemachten schmatics.</p>
+<p>Untenordner:</p>
+<ul>
+<li>P (Public)</li>
+<li>Tb (Testblöcke)</li>
+<li>[UUID] (Spielerspezifische)</li>
+</ul>
+<p>Diese unterordner enthalten unterordner entsprechend der schem kategorisierung.</p>
+<h2>servericons</h2>
+<p>Hier kannst du 64x64px pngs ablegen, welche wenn in der <a href="#config">Config</a> <code>serverListPlus</code> aktiv ist
+als servericons benutzt werden.</p>
+<p>(Dateinamen sind egal)</p>
+<h2>todo</h2>
+<p>Todolisten</p>
+<h2>user</h2>
+<p>yaml dateien mit nutzereinstellungen.</p>
+<p>hier kann root aktiviert werden.</p>
+<h2>ads.txt</h2>
+<p>bekutzt von dem ads-feature</p>
+<h2>cache.yml</h2>
+<p>speichert welche Bereiche vor dem herunterfahren geladen waren, etc.</p>
+<h2>wgc.cfg</h2>
+<p>siehe <a href="#config">Config</a></p>
+
+      </div>
+
+      <footer class="footer">
+        Build with <a href="https://github.com/BafS/Documentor">Documentor</a> 0.1.3
+      </footer>
+    </section>
+  </div>
+  <script>
+    "use strict";function _toConsumableArray(arr){return _arrayWithoutHoles(arr)||_iterableToArray(arr)||_unsupportedIterableToArray(arr)||_nonIterableSpread()}function _nonIterableSpread(){throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}function _unsupportedIterableToArray(o,minLen){if(!o)return;if(typeof o==="string")return _arrayLikeToArray(o,minLen);var n=Object.prototype.toString.call(o).slice(8,-1);if(n==="Object"&&o.constructor)n=o.constructor.name;if(n==="Map"||n==="Set")return Array.from(o);if(n==="Arguments"||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n))return _arrayLikeToArray(o,minLen)}function _iterableToArray(iter){if(typeof Symbol!=="undefined"&&iter[Symbol.iterator]!=null||iter["@@iterator"]!=null)return Array.from(iter)}function _arrayWithoutHoles(arr){if(Array.isArray(arr))return _arrayLikeToArray(arr)}function _arrayLikeToArray(arr,len){if(len==null||len>arr.length)len=arr.length;for(var i=0,arr2=new Array(len);i<len;i++){arr2[i]=arr[i]}return arr2}/**
+ * Get the current hash (without the leading #)
+ * @returns {string}
+ */var currentHash=function currentHash(){return window.location.hash.substr(1)||""};/**
+ * Get all pages element
+ * @returns {Element[]}
+ */var getPageElements=function getPageElements(){return _toConsumableArray(document.querySelectorAll(".content .page"))};var pageEls=getPageElements();/**
+ * Get current page index from an hash string
+ * @param {number} hash
+ */var getCurrentPageIndex=function getCurrentPageIndex(hash){return pageEls.findIndex(function(page,i){return page.id===hash||i===0&&hash===""})};/**
+ * Display class from hash string
+ * @param {string} hash
+ */var showPageFromHash=function showPageFromHash(hash){var activeIndex=0;pageEls.forEach(function(page,i){if(page.id===hash||i===0&&hash===""){activeIndex=i;page.classList.remove("hide")}else{page.classList.add("hide")}});return activeIndex};/**
+ * Toggle class for an element
+ * @param {Element} element
+ * @param {string} className
+ */var toggleClass=function toggleClass(element,className){if(element.classList!==null&&element.classList.contains(className)){element.classList.remove(className)}else{element.classList.add(className)}};/**
+ * Highlight the given word
+ * @param {Element} root
+ * @param {string} word
+ * @param {string} [className='highlight'] className
+ */function highlightWord(root,word){var className=arguments.length>2&&arguments[2]!==undefined?arguments[2]:"highlight";var excludeElements=["script","style","iframe","canvas"];var found=false;/**
+   * @returns {Node[]}
+   */var textNodesUnder=function textNodesUnder(){var walk=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,null,false);var text=[];while(walk.nextNode()){if(excludeElements.indexOf(walk.currentNode.parentElement.tagName.toLowerCase())<0){text.push(walk.currentNode)}}return text};/**
+   * Highlight words
+   * @param {Node} n
+   * @returns {boolean}
+   */var highlightWords=function highlightWords(n){var indexOfNode=function indexOfNode(node,i){return node.nodeValue.toLowerCase().indexOf(word.toLowerCase(),i)};var after;var span;var i=indexOfNode(n);if(!found&&i>-1){found=true}while(i>-1){after=n.splitText(i+word.length);span=document.createElement("span");span.className=className;span.appendChild(n.splitText(i));after.parentNode.insertBefore(span,after);n=after;i=indexOfNode(after,i)}};textNodesUnder().forEach(highlightWords);return found}/**
+ * Remove highlight from elements
+ * @param {Element[]} elements
+ */var removeHighlight=function removeHighlight(elements){elements.forEach(function(el){var prev=el.previousSibling;var next=el.nextSibling;prev.textContent+=el.textContent+next.textContent;el.parentNode.removeChild(next);el.parentNode.removeChild(el)})};var sidebarLinks=document.querySelectorAll(".sidebar ul li a");/**
+ * Highlight sidebar link
+ * @param {number} index
+ */var addClassSidebarIndex=function addClassSidebarIndex(index,className){sidebarLinks[index].classList.add(className)};/**
+ * Remove highlights from sidebar
+ * @param {string} className
+ */var removeClassesSidebar=function removeClassesSidebar(className){sidebarLinks.forEach(function(link){return link.classList.remove(className)})};var toggleActiveLinkSidebar=function toggleActiveLinkSidebar(index){sidebarLinks.forEach(function(link,i){if(i===index){link.classList.add("active")}else{link.classList.remove("active")}})};var responsiveBreakpoint=600;var main=document.querySelector(".main");document.querySelector("button.toggle-sidebar").onclick=function(){toggleClass(main,"full-width")};if(window.innerWidth<responsiveBreakpoint){// TODO: Fails with the < or > buttons
+// toggleClass(main, 'full-width');
+// hideSidebar();
+}document.querySelector("button.toggle-light").onclick=function(){toggleClass(main,"dark")};document.querySelector("button.next-page").onclick=function(){var nextIndex=Math.min(getCurrentPageIndex(currentHash())+1,pageEls.length-1);window.location.hash="#".concat(pageEls[nextIndex].id)};document.querySelector("button.previous-page").onclick=function(){var prevIndex=Math.max(0,getCurrentPageIndex(currentHash())-1);window.location.hash="#".concat(pageEls[prevIndex].id)};document.querySelector(".tools").classList.remove("hide");var searchInputEl=document.querySelector(".search-input");searchInputEl.classList.remove("hide");var highlightClass="highlight";searchInputEl.addEventListener("keypress",function(e){var key=e.which||e.keyCode;if(key===13){removeHighlight(_toConsumableArray(document.querySelectorAll(".content .highlight")));removeClassesSidebar(highlightClass);pageEls.forEach(function(el,pIndex){if(highlightWord(el,searchInputEl.value)){addClassSidebarIndex(pIndex,highlightClass)}})}});searchInputEl.addEventListener("keyup",function(e){var key=e.which||e.keyCode;if(key!==13&&searchInputEl.value.length<1){removeHighlight(_toConsumableArray(document.querySelectorAll(".content .".concat(highlightClass))));removeClassesSidebar(highlightClass)}});var showPageFromCurrentHash=function showPageFromCurrentHash(){var index=showPageFromHash(currentHash());toggleActiveLinkSidebar(index)};// Listen for hash change
+window.onhashchange=function(){showPageFromCurrentHash();if(window.innerWidth<responsiveBreakpoint){toggleClass(main,"full-width")}};showPageFromCurrentHash();
+  </script>
+</body>
+</html>

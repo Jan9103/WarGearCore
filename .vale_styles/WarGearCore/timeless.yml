@@ -1,0 +1,11 @@
+extends: existence
+message: "dont use 'currently'/.. just say 'not supported'"
+level: warning
+ignorecase: true
+tokens:
+    - as of writing
+    - as of this writing
+    - currently
+    - presently
+    - at present
+    - in the future

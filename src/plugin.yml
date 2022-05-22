@@ -1,0 +1,430 @@
+name: WarGearCore
+prefix: WGC
+main: de.jan9103.wargearcore.WGC
+author: Jan9103
+version: 15
+load: POSTWORLD
+api-version: 1.15
+description: a Core-Plugin for Wargear-Team-Servers (WIP)
+commands:
+ "npc":
+  usage: |
+   /<command> add (name)
+   /<command> remove (name)
+   /<command> list
+  descriptions: NPCs (unfinished)
+  permission: wgc.npc
+ "wgc":
+  usage: |
+   Multiple Commands
+   /<command> crash (player)
+   /<command> runtests
+   /<command> reload
+   /<command> defence ips
+   /<command> setProfilePicture (url)
+  description: a collection of commands
+ "todo":
+  usage: |
+   ToDo-Lists
+   list lists /<command>
+   create or read lists /<command> (name)
+   add item /<command> (list name) (item with spaces)
+   shift rclick to delete
+ "simplereload":
+  usage: |
+   /<command> copy
+   /<command> paste
+  description: a simplified reloader
+  permission: wgc.wge
+  aliases: ["sr"]
+ "wgcbug":
+  usage: /<command> (message)
+  description: send me a bug report
+  permission: true
+ "settings":
+  usage: /<command>
+  description: user settings
+  permission: wgc.basics.settings
+ "r":
+  usage: /<command>
+  description: u know
+  permission: wgc.basics
+ "tell":
+  usage: /<command>
+  description: u know
+  permission: wgc.basics
+  aliases: ["w","msg"]
+ "colorbook":
+  usage: /<command>
+  description: colorize a written book in your hand
+  permission: wgc.item
+ "settps":
+  usage: /<command> (speed)
+  description: change tickspeed
+  permission: wgc.admin
+ "unsign":
+  usage: /<command>
+  description: make a signed book editable again
+  permission: wgc.item
+ "(undo":
+  description: undo
+  usage: |
+   Undo
+   /<command> load (id)
+   /<command> list
+   /<command> paste (id)
+   /<command> (on/off)
+  permision: wgc.wge
+ "(schem":
+  description: magae YOUR schematics
+  usage: |
+   Schem Command
+   /<command> s(ave) [{typ}/]{name}[.{format}] [-o(verride)] [-c(common)]
+   /<command> l(oad) [{typ}/]{name}[.{format}] [-c(ommon)] [-p(aste)] [-p(aste)o(nly)]
+   /<command> d(el) [{typ}/]{name}[.{format}]
+   /<command> li(st) [-c(ommon)] [-p(age) {number}] [-c(ommon)]
+   /<command> setc(ommon) [{typ}/]{name}[.{format}] {true/false}
+  aliases: ["(s"]
+  permission: wgc.wge
+ "(fix":
+  usage: /<command>
+  description: fix fences and stuff
+  permission: wgc.wge
+ "testblock":
+  usage: |
+   paste /<command>
+   select /<command> set (format) (settings..)
+   paste shield /<command> s (..)
+   clean up shield blocks /<command> clean
+   add shield to config /<command> add (..)
+   remove shields to config /<command> removeall
+   /<command> xray (material) (material)
+   /<command> xray
+  descrption: testblock util inside of area
+  aliases: ["tb"]
+  permission: wgc.wga
+ "portablecannon":
+  usage: |
+   Portable Cannon Usage
+   shoot /<command>
+   shoot right/left click glittering_melon_slice
+   set /<command> <stich/shotgun/static> <tnt> [delay] [speed]
+  description: shoot a cannon without building it.
+  aliases: ["pc"]
+  permission: wgc.util.pc
+ "trace":
+  usage: |
+   Trace Command Usage
+   /<command> start
+   /<command> stop
+   /<command> show
+   /<command> hide
+   /<command> clear
+   /<command> mode
+   /<command> end -- stop, clear, hide
+  description: A tracer
+  permission: wgc.trace
+ "fight":
+  dscription: A fight plugin (not completly finished)
+  permission: wgc.fight.base
+ "wgcauth":
+  usage: /<command> setpw (pw) (pw)
+  description: account security
+  permission: wgc.basics
+ "rename":
+  usage: /<command> (name)
+  description: rename items (with color)
+  permission: wgc.item
+ "lore":
+  usage: /<command> (lore)
+  description: add lore to items (with color)
+  permission: wgc.item
+ "ench":
+  usage: /<command> (enchantment) (level)
+  description: enchant an item (without level cap)
+  permission: wgc.item
+ "unenchant":
+  usage: /<command> (enchantment)
+  description: remove enchantments from items
+  permission: wgc.item
+ "worldfreeze":
+  usage: /<command>
+  description: freeze outside of areas
+  permission: wgc.admin
+ "ping":
+  usage: /<command>
+  description: measures your ping to the server
+  permission: wgc.basics
+ "enderchest":
+  usage: |
+   /<command>
+   /<command> (Player)
+  description: open an enderchest
+  aliases: ["ec"]
+  permission: wgc.item
+ "worldtnt":
+  usage: /<command>
+  description: tnt outside of areas
+  permission: wgc.admin
+ "heal":
+  usage: /<command>
+  description: heal
+  permision: wgc.util
+ "walkspeed":
+  usage: /<command> (number between 0 and 10)
+  description: change your walkspeed
+  permission: wgc.util
+ "flyspeed":
+  usage: /<command> (number between -10 and 10)
+  description: change your flyspeed (and invert your controls with negatrive numbers)
+  permission: wgc.util
+ "nv":
+  usage: /<command>
+  description: nightvision
+  permission: wgc.util
+ "infinitefood":
+  usage: /<command>
+  description: saturation-effect
+  permission: wgc.util
+ "fly":
+  usage: /<command>
+  description: Fly
+  permission: wgc.util
+ "whois":
+  usage: /<command> (name)
+  description: info
+  permission: wgc.admin
+ "dcn":
+  usage: /<command> (text)
+  description: Save Notes on your discord-server
+  permission: wgc.basics
+ "inftnt":
+  description: infinite tnt
+  usage: /<command>
+  permission: wgc.item
+ "skull":
+  usage: /<command> (username)
+  description: gives a players skull
+  permission: wgc.opbasics
+ "back":
+  description: undo a (respawn-)teleport
+  usage: /<command>
+  permission: wgc.util
+ "timer":
+  description: start/stop a timer
+  usage: |
+   /<command> start (mins)
+   /<command> stop
+  permission: wgc.basics
+ "lag":
+  description: remove non-player-entities from your World.
+  usage: /<command>
+  permission: wgc.lag
+ "lagall":
+  description: remove non-player-entities from all Worlds.
+  usage: /<command>
+  permission: wgc.lag
+ "area":
+  description: multiple commands
+  aliases: [a]
+  usage: |
+   Area-Commands
+   /<command> create (x-Size) (y-Size) (z-Size) (max.-extend-width) (max ext front) (extra-area) (entfernung) (name)
+   /<command> create (Spielmodus) (name)
+   /<command> floor
+   /<command> sel [red/r /blue/blu/b]
+   /<command> frame [red/r /blue/blu/b]
+   /<command> tp (name)
+   /<command> load (name)
+   /<command> unload (name)
+   /<command> protect
+   /<command> prot
+   /<command> list
+   /<command> [waterremover/wr]
+   /<command> bu
+   /<command> bu [on/off/save]
+   /<command> reset
+  permission: wgc.wga
+ "(repnear":
+  usage: /<command> (int) (mat) (mat) (arg)
+  description: siehe FAWE
+  permission: wgc.wge
+ "tnt":
+  description: (de)activate tnt damage
+  usage: /<command>
+  permission: wgc.wga
+ "debug":
+  description: test stuff
+  usage: /<command>
+ "freeze":
+  description: freeze
+  usage: /<command>
+  permission: wgc.wga
+ "(cut":
+  description: copy AND set air
+  usage: /<command>
+  permission: wgc.wge
+ "(xray":
+  description:
+  usage: /<command> (block) (block)
+  permission: wgc.wge
+ "(posa":
+  description: set pos a
+  usage: /<command>
+  permission: wgc.wge
+ "(posb":
+  description: set pos b
+  usage: /<command>
+  permission: wgc.wge
+ "(clipboard":
+  description: some clipboard tools
+  usage: |
+   /<command> drain
+   /<command> size
+  aliases: ["(cb"]
+  permission: wgc.wge
+ "(air":
+  usage: /<command>
+  description: faster /(rep air
+  permission: wgc.wge
+ "(techhide":
+  usage: |
+   /<command>
+   /<command> (materials to exclude)
+  description: somewhat more intellegent than /(rep tech end_stone
+  permission: wgc.wge
+ "(expand":
+  usage: /<command> (amount)
+  description: expand the selected area in the direction you are facing
+  permission: wgc.wge
+ "(set":
+  description: set blocks - add n to the end to prevent blockupdates
+  usage: |
+   /<command> <item> (args)
+   /<command> (material 1),[...],(material n) (args)
+  permission: wgc.wge
+ "(fill":
+  description: replace air - add n to the end to prevent blockupdates
+  usage: /<command> (material(s)) (args)
+  permission: wgc.wge
+ "ctps":
+  usage: /<command>
+  description: shows tps
+  permission: wgc.basics
+ "(replace":
+  usage: |
+   /<command> (material(s)) (material(s)) (args)
+   /<command> (material(s)) (args)
+  aliases: ["(rep"]
+  description: Replace
+  permission: wgc.wge
+ "(testblock":
+  usage: /<command>
+  description: create a testblock in the selected area with techkillmarker in the direction you are looking
+  permission: wgc.wge
+ "(wall":
+  usage: <command> (material(s)) (args)
+  description: create walls around the selected area
+  permission: wgc.wge
+ "(copy":
+  usage: /<command>
+  description: copy
+  permission: wgc.wge
+ "(paste":
+  usage: /<command>
+  description: paste
+  permission: wgc.wge
+ "(resize":
+  usage: |
+   .
+   /<command> (new x-Size) (new y-Size) (new z-Size)
+   /<command> (MWG / WG / T1 / T2 / T3)
+  description: resize your Clipboard
+  permission: wgc.wge
+ "(slab":
+  usage: /<command> (material) (args)
+  description: place slabs on upgoing redstone
+  permission: wgc.wge
+ "(diff":
+  usage: /<command> (schem)
+  description: create a diff between your clipboard(+) and a schem(-) inside your clipboard
+  permission: wgc.wge
+ "gamemode":
+  usage: /<command> (gamemode)
+  description: change your gamemode
+  aliases: ["gm"]
+  permission: wgc.util
+ "helmet":
+  usage: |
+   /<command> (player)
+   /<command>
+  description: uses the item hold in your hand as helmet
+  permission: wgc.item
+permissions:
+ "wgc.wge":
+  description: WGE
+  default: op
+ "wgc.lag":
+  description: lag and lagall
+  default: op
+ "wgc.item":
+  description: item manipulation such as colorbook, rename, enchant, lore, inftnt, ec
+  default: op
+ "wgc.util":
+  description: nv, flyspeed, ect
+  default: op
+  children:
+   wgc.util.pc: true
+ "wgc.util.pc":
+  description: portable cannon (use and command)
+  default: op
+ "wgc.basics":
+  description: basic stuff like ctps, wgcfix, notell, ect
+  default: true
+  children:
+   wgc.basics.settings: true
+ "wgc.basics.settings":
+  description: /settings
+  default: true
+ "wgc.wga":
+  description: freeze, tnt, ect
+  default: op
+ "wgc.admin":
+  description: wgcreload, ect
+  default: op
+ "wgc.trace":
+  decsription: trace command
+  default: op
+ "wgc.wga.admin":
+  description: create, load, unload, ect
+  default: op
+ "wgc.wga.unrestricted":
+  description: access restricted areas
+  default: op
+ "wgc.chat.img":
+  description: send images in chat
+  default: op
+ "wgc.fight.base":
+  description: join fights, ect
+  default: true
+ "wgc.fight.admin":
+  description: manage and initialize fights
+  default: op
+ "wgc.extension":
+  description: basic extension commands - advanced ones currently require root
+ "wgc.npc":
+  description: /npc
+ "wgc.*":
+  default: false
+  description: all
+  children:
+   wgc.wge: true
+   wgc.lag: true
+   wgc.item: true
+   wgc.util: true
+   wgc.basics: true
+   wgc.wga: true
+   wgc.admin: true
+   wgc.chat.img: true
+   wgc.extension: true
+   wgc.npc: true

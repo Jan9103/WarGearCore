@@ -1,0 +1,68 @@
+########### WORDING ###################
+cServer (cs): connection server
+cClient (cc): connection client
+Server (sv): has a server function
+Client (ct) / End point: does not have a server function
+
+
+########################################
+
+
+in each connection one is a client and one a server (even if both are servers)
+
+in order to reduce load and avoid package dupes:
+- sv connect to all other sv in a network
+- ct only connect to one sv at a time (if sv goes offline next one)
+- sv amplify from sv recieved only to clients - end.
+- sv amplify from ct recieved to ct and sv
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+############### CONNECTING #################
+
+CLIENTS:
+1. connect to server
+2. exchange data (user settings, online players, etc)
+
+SERVERS:
+1. connect to all servers in the list
+	1. connect to the socket
+	2. exchange data (user settings, online players, connected servers, etc)
+	3. connect to servers the other server is connected to
+
+############## WHAT TO SHARE ################
+-------------- MC RELATED -----------------
+CHAT
+/MSG
+USER-SETTINGS (config)
+PLAYER JOIN
+PLAYER LEAVE
+-------------- MANAGEMENT -----------------
+CONNECT
+DISCONNECT
+-------------- MGMNT SxS only -------------
+A SERVER CONNECTED TO ME -> connect to it as well (and if really new spread info)
+
+-------------- MNGMT SxC only -------------

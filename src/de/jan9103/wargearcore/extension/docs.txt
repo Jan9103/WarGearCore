@@ -1,0 +1,17 @@
+############## CLASSES ##############################################
+vars.CPP				--> abstract Code Piece Part (exists in order to be able to mash everything into a array)
+vars.C[uppercase].*		--> Code Piece
+vars.CVar				--> abstract Value (variable or hardcoded)
+vars.S[uppercase].*		--> Static / Hardcoded Variable
+vars.M[uppercase].*		--> Link to Minecraft Object (Area / Player / ..)
+vars.Var				--> abstract Variable
+vars					--> Variable (extends vars.Var)
+
+############## LOADER ###############################################
+++++++++++++++ EXTENSION LOADER +++++++++++++++++++++++++++++++++++++
+loads an extension
+++++++++++++++ SCRIPT LOADER ++++++++++++++++++++++++++++++++++++++++
+loads a script
+-------------- BLOCK LOADER -----------------------------------------
+loads a code-block (ex: a while-loop / brackets / ..)
+
