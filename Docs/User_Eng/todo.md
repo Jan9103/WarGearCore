@@ -1,0 +1,43 @@
+╺┳╸┏━┓╺┳┓┏━┓   ┏━╸┏┓╻┏━╸   ╺┳┓┏━┓┏━╸┏━┓
+ ┃ ┃ ┃ ┃┃┃ ┃   ┣╸ ┃┗┫┃╺┓    ┃┃┃ ┃┃  ┗━┓
+ ╹ ┗━┛╺┻┛┗━┛   ┗━╸╹ ╹┗━┛   ╺┻┛┗━┛┗━╸┗━┛
+
+- [ ] Intro
+	- [x] WGC
+	- [x] FAQ
+	- [ ] Future
+- [x] Basics
+- [x] WGCore
+	- [x] Chat
+	- [x] ItemManipulation
+	- [x] Movement
+	- [x] Other
+	- [x] Performance
+	- [x] Portable Cannon
+	- [x] Shears
+- [x] WGArea
+	- [x] Management
+	- [x] Basics
+	- [x] Testblock
+	- [x] Backup
+	- [x] Tracer
+- [x] WGFight
+	- [x] Basics
+	- [x] Settings
+	- [x] Mods
+- [x] WGEdit
+	- [x] Basics
+	- [x] SimpleCmds
+	- [x] Clipbaord
+	- [x] Diff
+	- [x] Fix
+	- [x] Resize
+	- [x] Schem
+	- [x] Slab
+	- [x] Techhide
+	- [x] Xray
+- [x] WGCDefence
+- [ ] Management
+	- [ ] Setup
+	- [ ] Config
+	- [ ] Files
