@@ -57,5 +57,3 @@ unstable tnt explodiert wenn man es im survival abbaut.
 Einfach ein tnt in `unstable` umbennenen (`/rename unstable`) und plazieren.
 
 Bestimmt lustig in einem Fight.
-
-

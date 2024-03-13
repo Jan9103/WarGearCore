@@ -53,14 +53,6 @@ Dies (de-)aktiviert das Custom-Chat Feature.
 
 Vorallem da um kollisionen mit anderen Plugins zu vermeiden.
 
-## decentral
-
-Macht im augenblick noch garnichts.
-
-Wurde bislang nur zum testen des decentral-WGC systems genutzt und
-wird vermutlich auch wenn es fertig wird dafür genutzt, bis dahin
-solltet ihr allerdings die einstellungen einfach so (aus) lassen.
-
 ## defence
 
 (De-)aktivieren von WGCDefence Features.

@@ -51,7 +51,7 @@ gamemode | gm        | -
 survival | s         | 0
 creative | c         | 1
 adventure| a         | 2
-spectator| w (watch) |3
+spectator| w (watch) | 3
 
 ## F3+n fix
 

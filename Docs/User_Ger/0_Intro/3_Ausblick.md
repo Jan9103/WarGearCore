@@ -8,12 +8,12 @@ Ich (Jan9103) arbeite nicht besonders Konsistent oder viel an WGC.
 Da ich inzwischen Vollzeit arbeite habe ich allgemein auch nicht
 mehr so viel Zeit wie in der vergangenheit.
 
-Es werden vermutlich noch Dinge von mir kommen (vorallem wenn ich mal
-wieder an WarGears interresiert bin), aber erwartet keine Konsistenz.
+Es werden villeicht noch Dinge von mir kommen (vorallem wenn ich mal
+wieder an WarGears interresiert bin), aber erwartet keine Konsistenz
+oder großen Features.
 
-
-Meine Ideenlisten sind viel zu lang hierfür, aber ich wollte trotzdem
-ein paar größere Ideen mit euch teilen:
+Ich hatte noch eine Menge an ideen gehabt und vileicht setze ich mir irgendwann
+mal wieder an eine. Hier wären ein paar dieser (übergroßen) Ideen:
 
 ---
 
@@ -28,7 +28,7 @@ Und wenn wir schon dabei sind Cross-Platform Chaträumen?
 Hierfür wird eine API eingebaut werden und dann via addons (andere Plugins die WGCs
 APIs nutzen) verbunden.
 
-Geplante Platformen:
+Ideen:
 - [Discord][]
 - [Matrix][]
 - [Revolt][]

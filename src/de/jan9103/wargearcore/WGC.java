@@ -144,12 +144,13 @@ public class WGC extends JavaPlugin {
 	public static String servername="Homeserver",flagtext="WGC";
 	public static String _PREFIX_1="WG",_PREFIX_2_Core="Core",_PREFIX_2_Defence="Defence",_PREFIX_2_Edit="Edit",_PREFIX_2_Area="Area",_PREFIX_2_Fight="Fight",_PREFIX_2_Script="Script";
 	private static boolean betterTntTracker=false,reload=false,customChat=true,dropManager=true,ads=false,serverListPlus=false;
+	private static String bugReportDWH = "";
 	public static void dcLog(String s){
 		if(dcLogUrl!="") try{new DWHS(dcLogUrl,servername,"https://static.wikia.nocookie.net/minecraft_gamepedia/images/d/d2/Pufferfish_Artwork.png",s);}catch(Throwable t){}
 	}
 
 	public static boolean dcBug(String s){
-		try{new DWHS("https://discord.com/api/webhooks/865905541200871424/q8VXrt9oznnRmhellA6hOuXF1RZl6ne61FD5DEIx7V3rp1nuYWSiyjUwjhLTN4TnFf3m",servername,"https://static.wikia.nocookie.net/minecraft_gamepedia/images/d/d2/Pufferfish_Artwork.png",s); return false;}catch(Throwable e){return true;}
+		try{new DWHS(bugReportDWH,servername,"https://static.wikia.nocookie.net/minecraft_gamepedia/images/d/d2/Pufferfish_Artwork.png",s); return false;}catch(Throwable e){return true;}
 	}
 
 //	@Deprecated public static void log(Exception e){
@@ -318,12 +319,13 @@ public class WGC extends JavaPlugin {
 		dropManager       =i.gb("itemDropManager",true);
 		TraceTnt.noLoss   =i.gb("tracer.noDataLossOnModeswitch",false);
 		autoBugReportLog  =i.gb("autoBugReport",false);
+		bugReportDWH      =i.gs("BugReportDiscordWebHookUrl","");
 		advancedScoreboard=i.gb("advancedScoreboard",false);
 		serverListPlus    =i.gb("serverListPlus",false);
 		ads=i.gb("ads",false);
 		discoverytracker        =i.gb("discoverytracker",false);
 		activeBugReportBugSearch=i.gb("command.wgcbug.activeScan",false);
-		wgcDefence_auth         =i.gb("defence.authme",true);
+		wgcDefence_auth         =i.gb("defence.authme",false);
 		flagtext               =i.gs("join.flag","WGC");
 		_PREFIX_1              =i.gs("msg.prefix.1","WG");
 		_PREFIX_2_Core         =i.gs("msg.prefix.2.core","Core");

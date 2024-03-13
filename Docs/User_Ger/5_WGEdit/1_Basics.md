@@ -17,9 +17,6 @@ Statt der Holzaxt benutzt man eine Goldhacke/ Goldsense/ Was auch immer es aktue
 
 ---
 
-
----
-
 ## Legitime Materialien
 
 - Bukkit Namen (`stone`, `red_stained_glass`, etc)

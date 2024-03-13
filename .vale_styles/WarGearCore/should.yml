@@ -1,6 +1,0 @@
-extends: existence
-message: "determine if a action is required or optional instead of 'should'."
-level: warning
-ignorecase: true
-tokens:
-    - should

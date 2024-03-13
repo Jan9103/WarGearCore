@@ -59,7 +59,7 @@ public class LogHandler extends Handler implements CommandExecutor,Filter {
 			Bukkit.getLogger().log(Level.SEVERE,"[WGC] A error occured: \""+e.getMessage()+"\". Since you have disable auto-bug-report it wont be reported automatically.");
 			return;
 		}
-		Bukkit.getLogger().log(Level.WARNING,"[WGC] A error occured: \""+e.getMessage()+"\". It has been reported to me.");
+		Bukkit.getLogger().log(Level.WARNING,"[WGC] A error occured: \""+e.getMessage()+"\". It has been reported to to the auto-bug-report target.");
 		StringWriter sw=new StringWriter();
 		PrintWriter  pw=new PrintWriter(sw);
 
@@ -124,13 +124,13 @@ public class LogHandler extends Handler implements CommandExecutor,Filter {
 	}
 
 	@Override public boolean onCommand(CommandSender arg0,Command arg1,String arg2,String[] args){
-		String o="<@426317177847808000> "+arg0.getName()+":";
+		String o=arg0.getName()+":";
 
 		for(String i:args) o+=" "+i;
-		if(send(o)) arg0.sendMessage("[WGC] Failed to send Bugreport. you can report it manually on my discord: https://discord.gg/ddB2MDK");
+		if(send(o)) arg0.sendMessage("[WGC] Failed to send Bugreport.");
 		else{
 			if(WGC.activeBugReportBugSearch){
-				arg0.sendMessage("[WGC] Bugreport send - active-Bugreport is beeing generated async. If you want to support this Project or just want to stay up to date you can join my discord: https://discord.gg/ddB2MDK");
+				arg0.sendMessage("[WGC] Bugreport send - active-Bugreport is beeing generated async.");
 				new Thread(){
 					@Override public void run(){
 						WgcInternalTests wit=new WgcInternalTests();
@@ -140,7 +140,7 @@ public class LogHandler extends Handler implements CommandExecutor,Filter {
 					}
 				}.start();
 			}
-			else arg0.sendMessage("[WGC] Bugreport submitted. If you want to support this Project or just want to stay up to date you can join my discord: https://discord.gg/ddB2MDK");
+			else arg0.sendMessage("[WGC] Bugreport submitted.");
 		}
 		//debug(arg0);
 		return true;

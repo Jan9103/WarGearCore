@@ -60,8 +60,7 @@ public class WgcCommand implements CommandExecutor,TabCompleter {
 			if(u.root) root=true;
 		if(a.length<1){
 			if(u!=null){
-				new Msg(u).a("WarGearCore "+WGC.wgc.getDescription().getVersion()+" by Jan9103")
-				.d().aC("Official Discord: https://discord.gg/ddB2MDK",Msg.URL,"https://discord.gg/ddB2MDK","Open URL").a((Player)s);
+				new Msg(u).a("WarGearCore "+WGC.wgc.getDescription().getVersion()+" by Jan9103").a((Player)s);
 				return true;
 			}
 			else return msg(u,s,"Missing command argument..",true);

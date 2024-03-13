@@ -10,27 +10,7 @@ sondern auch markdown-ähkliche features implimentiert.
 
 `/settings`
 
-Da der Minecraft Chat vor der 1.16 nur 16 Farben unterstützt hat gibt es die
-`RGB JSON` Option. Da das Plugin 1.15 ist habe ich bislang noch nicht oft mehr
-Farben verwendet, wodurch es fast nie einen unterschied macht.
-
-Du kannst gerne weitere Chatthemes im Discord vorschlagen.
-
-"Inspirations"-Quellen der Chatthemes (ich habe einige Namen angepasst
-um legalen Problemen aus dem Weg zu gehen):
-
-Name           | Quelle
--------------- | ------
-Vanilla        | Bukkit
-VaporWarfare   | SteamWar
-YourGamingPlanet|MyPlayPlanet
-Pastell        |
-Yeti           |
-XAMPP          | XAMPP Server Konsole
-WTUtil         | WarTechUtil Plugin (WarTech Teamserver)
-PHCore         | PhantomCore Plugin (Phantom Teamserver)
-Interstellar   | AmirCore Plugin (Interstellar Teamserver)
-Old WGC        |
+Da der Minecraft Chat vor der 1.16 nur 16 Farben unterstützt hat gibt es die `RGB JSON` Option.
 
 ---
 
@@ -104,5 +84,3 @@ Du kannst entweder der Person der du zuletzt geschrieben hast oder der Person di
 ## Join Panel
 
 Das JoinPanel kann in `/settings` ausgetauscht werden
-
-

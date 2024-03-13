@@ -1,6 +1,6 @@
 # Advanced WarGearCore Fight
 
-This is a [WGC][] addon, which adds more Mods to the WGC-Fight system.
+This is a WGC addon, which adds more Mods to the WGC-Fight system.
 
 ## Mods included:
 
@@ -14,11 +14,3 @@ This is a [WGC][] addon, which adds more Mods to the WGC-Fight system.
 - Sack-race (you can only move by jumping)
 - Sillvester (explosive rockets flying up)
 - Space-Invaders (a bunch of aliens bombard you from above)
-
-## Building the code
-
-```sh
-SPIGOT_JAR="/path/to/your/spigot.jar" WGC_JAR="/path/to/your/WGC.jar" make build
-```
-
-[WGC]: /jan9103/WarGearCore
