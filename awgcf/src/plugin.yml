@@ -1,0 +1,9 @@
+name: AdvancedWGCFight
+prefix: AWGCF
+main: de.jan9103.wgc.advancedFight.P
+author: Jan9103
+version: 1
+load: POSTWORLD
+api-version: 1.15
+description: a WGC addon containing more fight mods
+depends: ["WarGearCore"]

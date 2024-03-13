@@ -23,7 +23,7 @@ Open a terminal and run the following commands in it:
 ```sh
 git clone https://github.com/jan9103/WarGearCore.git
 cd WarGearCore
-make jar
+make all
 ```
 
 Now you can find the jar file at `/home/YOUR_USERNAME/WarGearCore/build/WarGearCore.jar`
@@ -34,12 +34,12 @@ Now you can find the jar file at `/home/YOUR_USERNAME/WarGearCore/build/WarGearC
 
 [podman](https://podman.io/)
 ```bash
-podman run -v .:/wgc --rm ghcr.io/nixos/nix env -C /wgc nix-shell --run "make jar"
+podman run -v .:/wgc --rm ghcr.io/nixos/nix env -C /wgc nix-shell --run "make all"
 ```
 
 [docker](https://www.docker.com/)
 ```bash
-docker run -v .:/wgc --rm ghcr.io/nixos/nix env -C /wgc nix-shell --run "make jar"
+docker run -v .:/wgc --rm ghcr.io/nixos/nix env -C /wgc nix-shell --run "make all"
 ```
 
 #### Building on windows
