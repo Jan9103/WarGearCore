@@ -28,7 +28,7 @@ package de.jan9103.wargearcore.util;
 import java.lang.reflect.Field;
 
 import org.bukkit.Bukkit;
-import org.bukkit.craftbukkit.v1_15_R1.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_20_R3.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 
 import de.jan9103.wargearcore.LogHandler;
@@ -37,9 +37,8 @@ import de.jan9103.wargearcore.WGC;
 import de.jan9103.wargearcore.chat.ChatColor;
 import de.jan9103.wargearcore.listener.ExplosionListener;
 import de.jan9103.wargearcore.listener.FreezeListener;
-import net.minecraft.server.v1_15_R1.ChatComponentText;
-import net.minecraft.server.v1_15_R1.PacketPlayOutPlayerListHeaderFooter;
-import net.minecraft.server.v1_15_R1.PlayerConnection;
+import net.minecraft.network.protocol.game.PacketPlayOutPlayerListHeaderFooter;
+import net.minecraft.server.network.PlayerConnection;
 
 public class Tab {
 	public static boolean on=true;
@@ -66,53 +65,16 @@ public class Tab {
 
 	public static void sendBoth(Player p,String head,String foot){
 		if(!on) return;
-
-		CraftPlayer      cp=(CraftPlayer)p;
-		PlayerConnection pc=cp.getHandle().playerConnection;
-		PacketPlayOutPlayerListHeaderFooter packet=new PacketPlayOutPlayerListHeaderFooter();
-		Object header=new ChatComponentText(head);
-		Object footer=new ChatComponentText(foot);
-
-		try{
-			Field a=packet.getClass().getDeclaredField("header");
-			a.setAccessible(true);
-			Field b=packet.getClass().getDeclaredField("footer");
-			b.setAccessible(true);
-			a.set(packet,header);
-			b.set(packet,footer);
-			pc.sendPacket(packet);
-		}catch(Exception e){LogHandler.handleException(e);}
+		p.setPlayerListHeaderFooter(head, foot);
 	}
 
 	public static void sendHeader(Player p,String txt){
 		if(!on) return;
-
-		CraftPlayer      cp=(CraftPlayer)p;
-		PlayerConnection pc=cp.getHandle().playerConnection;
-		PacketPlayOutPlayerListHeaderFooter packet=new PacketPlayOutPlayerListHeaderFooter();
-		Object header=new ChatComponentText(txt);
-
-		try{
-			Field a=packet.getClass().getDeclaredField("header");
-			a.setAccessible(true);
-			a.set(packet,header);
-			pc.sendPacket(packet);
-		}catch(Exception e){LogHandler.handleException(e);}
+		p.setPlayerListHeader(txt);
 	}
 
 	public static void sendFooter(Player p,String txt){
 		if(!on) return;
-
-		CraftPlayer      cp=(CraftPlayer)p;
-		PlayerConnection pc=cp.getHandle().playerConnection;
-		PacketPlayOutPlayerListHeaderFooter packet=new PacketPlayOutPlayerListHeaderFooter();
-		Object header=new ChatComponentText(txt);
-
-		try{
-			Field b=packet.getClass().getDeclaredField("footer");
-			b.setAccessible(true);
-			b.set(packet,header);
-			pc.sendPacket(packet);
-		}catch(Exception e){LogHandler.handleException(e);}
+		p.setPlayerListFooter(txt);
 	}
 }

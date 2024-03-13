@@ -30,7 +30,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 import org.bukkit.Bukkit;
-import org.bukkit.craftbukkit.v1_15_R1.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_20_R3.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 
 import de.jan9103.wargearcore.User;
@@ -219,7 +219,7 @@ public class JoinMsgPanel {
 	public void send(User u,Player p){
 		ArrayList<Player>ps=new ArrayList<>(Bukkit.getOnlinePlayers());
 		final Msg        m =new Msg(u,null).aC("WGC CB-"+WGC.VERSION+" (made by Jan9103)",Msg.URL,"https://discord.gg/ddB2MDK","Join the official Discord-Server")
-				     .a("\nPing: ").b(((CraftPlayer)p).getHandle().ping+"")
+				     .a("\nPing: ").b(p.getPing()+"")
 				     .a("\nTPS: ").b(TPS.b())
 				     .a("\nloaded Areas: ").b(WgArea.areas.size()+"")
 				     .a("\n\n\n");

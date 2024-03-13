@@ -33,8 +33,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.nio.charset.StandardCharsets;
-
-import org.bukkit.craftbukkit.libs.org.apache.commons.codec.binary.Base64;
+import java.util.Base64;
 
 public class FileWriter {
 	public static byte[] read(File f)throws IOException {
@@ -93,7 +92,7 @@ public class FileWriter {
 	}
 
 	public static void write(File f,String s)throws IOException {
-		write(f,Base64.decodeBase64(s));
+		write(f,Base64.getDecoder().decode(s));
 	}
 
 	public static String readStr(File f)throws IOException {

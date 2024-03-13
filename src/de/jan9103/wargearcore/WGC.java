@@ -67,12 +67,10 @@ import de.jan9103.wargearcore.cmds.InfiniFood;
 import de.jan9103.wargearcore.cmds.LagAllCmd;
 import de.jan9103.wargearcore.cmds.LagCmd;
 import de.jan9103.wargearcore.cmds.LoreCommand;
-import de.jan9103.wargearcore.cmds.NPCcommand;
 import de.jan9103.wargearcore.cmds.NightVision;
 import de.jan9103.wargearcore.cmds.PingCmd;
 import de.jan9103.wargearcore.cmds.RenameCommand;
 import de.jan9103.wargearcore.cmds.RespondCmd;
-import de.jan9103.wargearcore.cmds.SetTpsCmd;
 import de.jan9103.wargearcore.cmds.SkullCmd;
 import de.jan9103.wargearcore.cmds.TellCmd;
 import de.jan9103.wargearcore.cmds.TimerCmd;
@@ -87,7 +85,6 @@ import de.jan9103.wargearcore.cmds.WhoIsCmd;
 import de.jan9103.wargearcore.cmds.WorldFreezeCmd;
 import de.jan9103.wargearcore.cmds.WorldTntCmd;
 import de.jan9103.wargearcore.decentral.DecentralServer;
-import de.jan9103.wargearcore.extension.ExtensionManager;
 import de.jan9103.wargearcore.fight.Fight;
 import de.jan9103.wargearcore.fight.FightCmd;
 import de.jan9103.wargearcore.fight.listener.NoTeamPvp;
@@ -124,7 +121,6 @@ import de.jan9103.wargearcore.worldedit.AxeListener;
 public class WGC extends JavaPlugin {
 	public static WGC wgc;
 	public static final Vector nullVector=new Vector(0,0,0);
-	@Deprecated public ExtensionManager extm;
 	/** /.../plugins/WarGearCore */
 	public static String dataFolder=null;
 	/** The global scoreboard */
@@ -176,7 +172,6 @@ public class WGC extends JavaPlugin {
 		new File(dataFolder+"/areas").mkdir();
 		new File(dataFolder+"/backup").mkdir();
 		new File(dataFolder+"/servericons").mkdir();
-		new File(dataFolder+"/extensions").mkdir();
 		new File(dataFolder+"/inventories").mkdir();
 		new File(dataFolder+"/fightpresets").mkdir();
 		ToDo.load();
@@ -185,8 +180,8 @@ public class WGC extends JavaPlugin {
 	}
 
 	@Override public void onEnable(){
-		if(!getServer().getVersion().contains("1.15")){
-			Bukkit.getLogger().log(Level.WARNING,"This Version of WGC is only ment for Bukkit-1.15 - nothing newer or older -- please use another version of the plugin or server. Server Version: "+getServer().getVersion()); return;
+		if(!getServer().getVersion().contains("1.20")){
+			Bukkit.getLogger().log(Level.WARNING,"This Version of WGC is only ment for Bukkit-1.20 - nothing newer or older -- please use another version of the plugin or server. Server Version: "+getServer().getVersion()); return;
 		}
 		if(reload){
 			TPS.a(5);
@@ -206,12 +201,9 @@ public class WGC extends JavaPlugin {
 		msbo.getScore("Online: ").setScore(0);
 		new UserManager();
 		TPS.d();
-		getCommand("npc").setExecutor(new NPCcommand());
 		getCommand("wgc").setExecutor(new WgcCommand());
 		getCommand("wgcbug").setExecutor(logHandler);
 		getCommand("settings").setExecutor(new UserSettingCmd());
-//		getCommand("debug").setExecutor(new DebugCmd());
-		getCommand("settps").setExecutor(new SetTpsCmd());
 		getCommand("gamemode").setExecutor(new GamemodeCmds());
 		getCommand("lag").setExecutor(new LagCmd());
 		getCommand("lagall").setExecutor(new LagAllCmd());
@@ -251,7 +243,6 @@ public class WGC extends JavaPlugin {
 		getCommand("simplereload").setExecutor(new SimpReloadCmd());
 		getCommand("wgcauth").setExecutor(new WGCAuthCmd());
 		getCommand("infinitefood").setExecutor(new InfiniFood());
-		//getCommand("extension").setExecutor(new ExtensionCmd());
 		final ReplaceCmd rc=new ReplaceCmd();
 
 		getCommand("(set").setExecutor(new SetCmd());
@@ -303,10 +294,6 @@ public class WGC extends JavaPlugin {
 			try{Bukkit.getScheduler().scheduleSyncRepeatingTask(this,new adRunnable(),12000,12000);}catch(IOException e){logHandler.add("[WGC] Unable to read Ads file");}
 		UserManager.startUpdater();
 		reloadsettings();
-//		try{
-//			extm=new ExtensionManager();
-//			extm.loadAll();
-//		}catch(IllegalArgumentException|IllegalAccessException e){/*log(e);*/e.printStackTrace();}
 	}
 
 	@Override public void onDisable(){

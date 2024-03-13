@@ -21,9 +21,6 @@ the coordinate system used for WGE, areas, etc.
 ## decentral (WIP):
 WGC decentral stuff.
 
-## extension @Deprecated:
-the code for the extension-system, which i broke at some point.
-
 ## fight:
 everything fight related.
 

@@ -29,12 +29,8 @@ import java.util.UUID;
 
 import de.jan9103.java.utils.Curl;
 import de.jan9103.java.utils.SimpJson;
-import org.apache.logging.log4j.core.config.plugins.convert.TypeConverters.UuidConverter;
+import de.jan9103.java.utils.json.*;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
 
@@ -46,29 +42,19 @@ public class UUIDconv {
 	public static UUID toUUID(String n){
 		if(n==null) return null;
 
-		try {return new UuidConverter().convert(n);}catch(final Exception e){}
+		try {return UUID.fromString(n);}catch(final Exception e){}
 		return null;
 	}
 
 	public static String idS(String n){
 		try{
 			return new SimpJson(Curl.getHttps("https://api.mojang.com/users/profiles/minecraft/"+n)).get("id",null);
-			//return SimpJson.parse(Curl.getHttps("https://api.mojang.com/users/profiles/minecraft/"+n)).getOrDefault("id",null);
-			//final Scanner s=new Scanner(new URL("https://api.mojang.com/users/profiles/minecraft/"+n).openStream(), "UTF-8");
-			//final String js=s.useDelimiter("\\A").next();
-			//s.close();
-			//if(js.isEmpty()) return null;
-			//final JSONObject jso=(JSONObject)JSONValue.parseWithException(js);
-			//return jso.get("id").toString();
 		}catch(final Exception e){}
 		return null;
 	}
 
 	public static String idSc(String n){
 		return cutId(idS(n));
-//		final String t=idS(n);
-//		if(t==null)return null;
-//		return t.substring(0, 8)+"-"+t.substring(8, 12)+"-"+t.substring(12, 16)+"-"+t.substring(16, 20)+"-"+t.substring(20);
 	}
 
 	public static String cutId(String t){
@@ -91,40 +77,14 @@ public class UUIDconv {
 		final UUID id=id(n); if(id==null) return null; return gp(id);
 	}
 
-	public static GameProfile genGp(String n){
-		String id =idS(n);
-		UUID   uid=toUUID(cutId(id));
-
-		if(uid==null) return null;
-
-		String profile=profile(id+"?unsigned=false");
-
-		if(profile==null) return null;
-
-		JsonObject jso      =new JsonParser().parse(profile).getAsJsonObject().get("properties").getAsJsonArray().get(0).getAsJsonObject();
-		String     texture  =jso.get("value").getAsString();
-		String     signature=jso.get("signature").getAsString();
-
-		if(texture==null||texture.isEmpty()) return null;
-
-		GameProfile gp=new GameProfile(uid,n);
-
-		gp.getProperties().put("textures",new Property("textures",texture,signature));
-		return gp;
-	}
-
 	public static String profile(String uuid){
 		try{
 			return Curl.getHttps("https://sessionserver.mojang.com/session/minecraft/profile/"+uuid);
-			//final Scanner s=new Scanner(new URL("https://sessionserver.mojang.com/session/minecraft/profile/"+uuid).openStream(), "UTF-8");
-			//final String str=s.useDelimiter("\\A").next();
-			//s.close();
-			//return str;
 		}catch(final Exception e){}
 		return null;
 	}
 
-	public static String getTextureByName(String name){
+	public static String getTextureByName(String name) throws JsonParseException{
 		String id=idS(name);
 
 		if(id==null) return null;
@@ -133,25 +93,25 @@ public class UUIDconv {
 
 		if(profile==null) return null;
 
-		JsonArray jsa=new JsonParser().parse(profile).getAsJsonObject().get("properties").getAsJsonArray();
+		JsonArray jsa=(JsonArray)((JsonDict)new JsonDecoder(profile).json).get("properties");
 
-		for(JsonElement i:jsa)
-			if(i.getAsJsonObject().get("name").getAsString().equalsIgnoreCase("textures"))
-				return i.getAsJsonObject().get("value").getAsString();
+		for(Json i:jsa)
+			if(((JsonValue)((JsonDict)i).get("name")).asStr().equalsIgnoreCase("textures"))
+				return ((JsonValue)((JsonDict)i).get("value")).asStr();
 
 		return null;
 	}
 
-	public static String getTextureById(String id){
+	public static String getTextureById(String id) throws JsonParseException{
 		String profile=profile(id);
 
 		if(profile==null) return null;
 
-		JsonArray jsa=new JsonParser().parse(profile).getAsJsonObject().get("properties").getAsJsonArray();
+		JsonArray jsa=(JsonArray)((JsonDict)new JsonDecoder(profile).json).get("properties");
 
-		for(JsonElement i:jsa)
-			if(i.getAsJsonObject().get("name").getAsString().equalsIgnoreCase("textures"))
-				return i.getAsJsonObject().get("value").getAsString();
+		for(Json i:jsa)
+			if(((JsonValue)((JsonDict)i).get("name")).asStr().equalsIgnoreCase("textures"))
+				return ((JsonValue)((JsonDict)i).get("value")).asStr();
 
 		return null;
 	}

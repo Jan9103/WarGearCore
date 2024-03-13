@@ -1,33 +1,51 @@
 # WarGearCore
+
 A MCIV-WarGear Team- and Homeserver Bukkit-Plugin.
 
-Feel free to join the [Discord][] for help, information, etc.
+## Usage
 
-## License
-This project uses the [Boost Software License][] ([BSL Explanation][]).  
+- How to set up a Server: [German](https://html-preview.github.io/?url=https%3A%2F%2Fgithub.com%2FJan9103%2FWarGearCore%2Fblob%2Fmain%2FDocs%2Fuser_ger.html#setup)
+- Documentation: [German](https://html-preview.github.io/?url=https%3A%2F%2Fgithub.com%2FJan9103%2FWarGearCore%2Fblob%2Fmain%2FDocs%2Fuser_ger.html)
 
-## Contributing:
-If you want to contribute feel free to create a pullrequest.
-Please read the [CONTRIBUTING file](CONTRIBUTING.md) first.
+### Getting a plugin JAR
 
-## FAQ
-### What is WarGear?
-WarGear is a Minecraft gamemode created in 2012 by [MCIV][]  
-Explanations:
-- [In German by WarTech from 2021](https://www.youtube.com/watch?v=LOYFF7fMwPw)
-- [In German by TitanPlays from 2016](https://www.youtube.com/watch?v=WglDAb1WeYU)
-- [A brief overview in English by Desperados from 2021](https://www.youtube.com/watch?v=5wTaA7ATjUE)
+#### Official Downloads
 
-### Is there a TODO-List?
-There are to many. Over the years i used 5 different programs and never properly migrated.
+(none yet)
 
-Ill try to migrate to GitHub issues now.
+#### Building on linux
 
+Depending on your distribution you might have to install the dependencies:
+bash, curl, git, gnumake, openjdk17, zip, unzip
 
-<!-------------------------- Links -------------------------------->
+Open a terminal and run the following commands in it:
 
-[Boost Software License]: https://www.boost.org/users/license.html
-[BSL Explanation]: https://tldrlegal.com/license/boost-software-license-1.0-explained
-[Discord]: https://discord.gg/aspXBJhzvw
-[MCIV]: https://www.youtube.com/user/MrCreativeIV
-[Kanban.bash]: https://github.com/coderofsalvation/kanban.bash
+```sh
+git clone https://github.com/jan9103/WarGearCore.git
+cd WarGearCore
+make jar
+```
+
+Now you can find the jar file at `/home/YOUR_USERNAME/WarGearCore/build/WarGearCore.jar`
+
+#### Building using a OCI-container-engine
+
+(run in the WarGearCore code directory after downloading it)
+
+[podman](https://podman.io/)
+```bash
+podman run -v .:/wgc --rm ghcr.io/nixos/nix env -C /wgc nix-shell --run "make jar"
+```
+
+[docker](https://www.docker.com/)
+```bash
+docker run -v .:/wgc --rm ghcr.io/nixos/nix env -C /wgc nix-shell --run "make jar"
+```
+
+#### Building on windows
+
+Your options:
+1. [use linux](https://en.wikipedia.org/wiki/Windows_Subsystem_for_Linux)  
+2. [use linux](https://en.wikipedia.org/wiki/VMware_Workstation_Player)
+3. [use linux](https://www.docker.com/)
+4. reverse engineer spigot yourself

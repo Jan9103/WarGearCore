@@ -9,14 +9,6 @@ slug: performance
 
 ---
 
-## TPS Limiter
-
-(Nie wirklich fertig getestet und scheint ein paar eigenheiten zu haben)
-
-`/settps (tps)`
-
----
-
 ## Performance verbesserung
 
 WGC hat Lagreduzierungs-systeme eingebaut.

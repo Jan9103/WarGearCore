@@ -29,7 +29,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.TileState;
-import org.bukkit.craftbukkit.v1_15_R1.CraftWorld;
+import org.bukkit.craftbukkit.v1_20_R3.CraftWorld;
 import org.bukkit.entity.Player;
 
 import de.jan9103.wargearcore.User;
@@ -38,7 +38,7 @@ import de.jan9103.wargearcore.WGC;
 import de.jan9103.wargearcore.area.WgArea;
 import de.jan9103.wargearcore.chat.Msg;
 import de.jan9103.wargearcore.worldedit.cmds.WorldEditCmd;
-import net.minecraft.server.v1_15_R1.BlockPosition;
+import net.minecraft.core.BlockPosition;
 
 public class SetCmd extends Cmd {
 	private final VarType c;
@@ -140,7 +140,7 @@ public class SetCmd extends Cmd {
 					if(c==null) return;
 
 					final Material f=v.gM(a(a[0].charAt(2)));
-					if(c.getState() instanceof TileState) ((CraftWorld)c.getWorld()).getHandle().removeTileEntity(new BlockPosition(c.getX(),c.getY(),c.getZ()));
+					// if(c.getState() instanceof TileState) ((CraftWorld)c.getWorld()).getHandle().removeTileEntity(new BlockPosition(c.getX(),c.getY(),c.getZ()));
 					c.setType(f,false);
 				}
 				}

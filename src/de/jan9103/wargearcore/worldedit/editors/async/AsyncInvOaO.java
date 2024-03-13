@@ -29,11 +29,11 @@ import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.block.TileState;
-import org.bukkit.craftbukkit.v1_15_R1.CraftWorld;
+import org.bukkit.craftbukkit.v1_20_R3.CraftWorld;
 
 import de.jan9103.wargearcore.coordSys.BigArea;
 import de.jan9103.wargearcore.worldedit.editors.WeSender;
-import net.minecraft.server.v1_15_R1.BlockPosition;
+import net.minecraft.core.BlockPosition;
 
 /**
  * fill(arg.air) & rep(arg.rest)
@@ -57,7 +57,7 @@ public class AsyncInvOaO extends AsyncEditor3 {
 					if(b.getType()==Material.AIR){
 						b.setType(a,u); continue;
 					}
-					if(b.getState() instanceof TileState) cw.getHandle().removeTileEntity(new BlockPosition(x,y,z));
+					// if(b.getState() instanceof TileState) cw.getHandle().removeTileEntity(new BlockPosition(x,y,z));
 					b.setType(r,u);
 				}
 	}

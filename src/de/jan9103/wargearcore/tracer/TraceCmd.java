@@ -85,13 +85,6 @@ public class TraceCmd extends UserOnlyCmd {
 				}
 				z.trace.hide();
 				switch(a[1].toLowerCase()){
-				case "ep":
-				case "explosionpoint":
-					z.trace.tm=new ExplopointTrailMode(z.trace); return;
-
-				case "trail":
-					z.trace.tm=new BarrierTrailMode(z.trace); return;
-
 				case "ov":
 				case "overview": {
 					int dist=2000; int rate=40;

@@ -148,7 +148,6 @@ public class LogHandler extends Handler implements CommandExecutor,Filter {
 
 	/**
 	 * sends the latest log entries to the CommandSender.
-	 * @deprecated
 	 */
 	public void debug(CommandSender s){
 		for(int i=0; i<30; i++) s.sendMessage(i+": "+pLog[i]);

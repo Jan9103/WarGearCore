@@ -35,29 +35,29 @@ import de.jan9103.wargearcore.UserManager;
 import de.jan9103.wargearcore.WGC;
 import de.jan9103.wargearcore.area.WgArea;
 import de.jan9103.wargearcore.chat.BcMsg;
-import net.minecraft.server.v1_15_R1.SystemUtils;
+import net.minecraft.SystemUtils;
 
 public class TPS {
 	// TPS change ############################################################################################################
 	public static long nO  =0;
 	public static long d0  =0;
 	private static int skip=0;
-	public static Long nt(){
-		return SystemUtils.a.getAsLong();
-	}                                                          // better (?): return nO+System.nanoTime();
+	// public static Long nt(){
+	// 	return SystemUtils.a;
+	// }                                                          // better (?): return nO+System.nanoTime();
 
-	private static void startTpsChanger(){
-		Bukkit.getScheduler().scheduleSyncRepeatingTask(WGC.wgc,()->{nO+=d0+skip; skip=0;},1,1);
-		nO           =SystemUtils.a.getAsLong()-System.nanoTime();
-		SystemUtils.a=()->(System.nanoTime()+((LongSupplier)()->nO).getAsLong());
-	}
+	// private static void startTpsChanger(){
+	// 	Bukkit.getScheduler().scheduleSyncRepeatingTask(WGC.wgc,()->{nO+=d0+skip; skip=0;},1,1);
+	// 	nO           =SystemUtils.a-System.nanoTime();
+	// 	SystemUtils.a=()->(System.nanoTime()+((LongSupplier)()->nO).getAsLong());
+	// }
 
-	public static void b(Float tps){
-		if(tps<=0) return;
+	// public static void b(Float tps){
+	// 	if(tps<=0) return;
 
-		ovLpC=tps/overloadProt;
-		d0   =Math.round(-(100000000/(double)tps)+5000000);
-	}
+	// 	ovLpC=tps/overloadProt;
+	// 	d0   =Math.round(-(100000000/(double)tps)+5000000);
+	// }
 
 	// TPS info ##############################################################################################################
 	public static long lastTick;
@@ -81,7 +81,7 @@ public class TPS {
 
 	public static void d(){
 		ovLpC=20F/overloadProt;
-		startTpsChanger();
+		//startTpsChanger();
 		lastTick=System.currentTimeMillis();
 		shedule =Bukkit.getScheduler().scheduleSyncRepeatingTask(WGC.wgc,()->{
 			final double i=20/Long.max((System.currentTimeMillis()-lastTick)/1000,1);
@@ -106,7 +106,6 @@ public class TPS {
 							case ARROW:
 							case FIREWORK:
 							case PRIMED_TNT: z.remove();
-
 							default:
 							}
 				}
@@ -122,21 +121,13 @@ public class TPS {
 	public static String a(){
 		switch((byte)Math.round(TPS.tps)<<1){
 		case 1: return "§8[§4#---------§8] (§4"+b()+"TPS§8)";
-
 		case 2: return "§8[§4##--------§8] (§4"+b()+"TPS§8)";
-
 		case 3: return "§8[§c###-------§8] (§c"+b()+"TPS§8)";
-
 		case 4: return "§8[§c####------§8] (§c"+b()+"TPS§8)";
-
 		case 5: return "§8[§6#####-----§8] (§6"+b()+"TPS§8)";
-
 		case 6: return "§8[§6######----§8] (§6"+b()+"TPS§8)";
-
 		case 7: return "§8[§e#######---§8] (§e"+b()+"TPS§8)";
-
 		case 8: return "§8[§e########--§8] (§e"+b()+"TPS§8)";
-
 		case 9: return "§8[§a#########-§8] (§a"+b()+"TPS§8)";
 
 		default:

@@ -29,12 +29,12 @@ import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.block.TileState;
-import org.bukkit.craftbukkit.v1_15_R1.CraftWorld;
+import org.bukkit.craftbukkit.v1_20_R3.CraftWorld;
 
 import de.jan9103.wargearcore.coordSys.BigArea;
 import de.jan9103.wargearcore.worldedit.editors.Undo;
 import de.jan9103.wargearcore.worldedit.editors.WeSender;
-import net.minecraft.server.v1_15_R1.BlockPosition;
+import net.minecraft.core.BlockPosition;
 
 public class AsyncRepO extends AsyncEditor3 {
 	public final Material to;
@@ -49,7 +49,7 @@ public class AsyncRepO extends AsyncEditor3 {
 				for(int z=zl; z<=zh; z++){
 					final Block b=w.getBlockAt(x,y,z);
 					if(b.getType()==Material.AIR) continue;
-					if(b.getState() instanceof TileState) cw.getHandle().removeTileEntity(new BlockPosition(x,y,z));
+					// if(b.getState() instanceof TileState) cw.getHandle().removeTileEntity(new BlockPosition(x,y,z));
 					b.setType(to,u);
 				}
 	}

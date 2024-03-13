@@ -29,8 +29,8 @@ import java.util.HashSet;
 
 import org.bukkit.block.Block;
 import org.bukkit.block.Sign;
-import org.bukkit.craftbukkit.v1_15_R1.CraftWorld;
-import org.bukkit.craftbukkit.v1_15_R1.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_20_R3.CraftWorld;
+import org.bukkit.craftbukkit.v1_20_R3.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -44,9 +44,9 @@ import de.jan9103.wargearcore.chat.Msg;
 import de.jan9103.wargearcore.jsvn.ScriptBinary;
 import de.jan9103.wargearcore.listener.ClickListener;
 import de.jan9103.wargearcore.util.WGCAuth;
-import net.minecraft.server.v1_15_R1.BlockPosition;
-import net.minecraft.server.v1_15_R1.PacketPlayOutOpenSignEditor;
-import net.minecraft.server.v1_15_R1.TileEntitySign;
+import net.minecraft.core.BlockPosition;
+import net.minecraft.network.protocol.game.PacketPlayOutOpenSignEditor;
+import net.minecraft.world.level.block.entity.TileEntitySign;
 
 public class AxeListener implements Listener {
 	public static final HashSet<Player>book=new HashSet<>();
@@ -99,26 +99,6 @@ public class AxeListener implements Listener {
 		}
 
 		case SHEARS: ClickListener.a(e); return;                        // FERNZUENDER
-
-		case ACACIA_SIGN:
-		case JUNGLE_SIGN:
-		case DARK_OAK_SIGN:
-		case BIRCH_SIGN:
-		case SPRUCE_SIGN:
-		case OAK_SIGN: {                                                                        // EDITABLE SIGNS
-			if(p.isSneaking()||p.isSprinting()) return;
-
-			Block b=e.getClickedBlock();
-			if(b==null) return;
-
-			if(!(e.getClickedBlock().getState() instanceof Sign)) return;
-
-			BlockPosition bp=new BlockPosition(b.getX(),b.getY(),b.getZ());
-			((TileEntitySign)((CraftWorld)p.getWorld()).getHandle().getTileEntity(bp)).isEditable=true;
-			PacketPlayOutOpenSignEditor pckt=new PacketPlayOutOpenSignEditor(bp);
-			((CraftPlayer)p).getHandle().playerConnection.sendPacket(pckt);
-			return;
-		}
 
 		default: return;
 		}

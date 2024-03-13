@@ -42,7 +42,7 @@ public class Undo {
 	private final int xo,yo,zo;
 	public Undo(int xl,int yl,int zl,int xh,int yh,int zh){
 		xo=xl; yo=yl; zo=zl;
-		cb=new Clipboard(xh-xl,yh-yl,zh-zl);
+		cb=new Clipboard(xh-xl+1,yh-yl+1,zh-zl+1);
 		cb.setOriginalCopyPoint(new BigCoord(xl,yl,zl));
 	}
 
@@ -64,9 +64,9 @@ public class Undo {
 	public void sA(int xl,int xh,int yl,int yh,int zl,int zh,World w){
 		int xm=xh-xl,ym=yh-yl,zm=zh-zl;
 
-		for(int x=0; x<xm; x++)
-			for(int y=0; y<ym; y++)
-				for(int z=0; z<zm; z++)
+		for(int x=0; x<=xm; x++)
+			for(int y=0; y<=ym; y++)
+				for(int z=0; z<=zm; z++)
 					/*if(cb.unset(x,y,z))*/ cb.set(x,y,z,w.getBlockAt(x+xo,y+yo,z+zo));
 	}
 

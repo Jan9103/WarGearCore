@@ -38,18 +38,13 @@ public class TpsCmd implements CommandExecutor {
 		final long    use=tot-fre;
 		final double  per=(double)use/tot*100;
 
-		//final String c=System.getenv("NUMBER_OF_PROCESSORS");
 		s.sendMessage(
 			"§8############# §7Performance §8###########§7"+
 			"\nDUE TO UNKNOWN REASONS THE TPS IS OFTEN WRONG IF THE TPSLIMITER IS ON ! im working on it.."+
 			"\nWGC-TPS: "+TPS.a()+
 			"§7\nRAM:       "+ram(per,"%")+
-			//		"§7\nCPU:       §8(§7"+System.getProperty("os.arch","?")+"§8,§7 "+(c==null?"?":c)+"§8)"+
-			//		"§7\nJAVA:     "+System.getProperty("java.version","?")+" §8(§7"+System.getProperty("java.vm.vendor","?")+"§8)"+
-			//		"§7\nOS         "+System.getProperty("os.name","?")+" §8(§7"+System.getProperty("os.version","?")+"§8)"+
 			"\n####################################"
 			);
-		//s.sendMessage("DEBUG: "+((TPS.tmp3-TPS.tmp1)/20));
 		return true;
 	}
 

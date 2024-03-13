@@ -39,7 +39,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.command.RemoteConsoleCommandSender;
 import org.bukkit.command.TabCompleter;
-import org.bukkit.craftbukkit.v1_15_R1.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_20_R3.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 
 import de.jan9103.wargearcore.C;
@@ -49,7 +49,7 @@ import de.jan9103.wargearcore.WGC;
 import de.jan9103.wargearcore.chat.Msg;
 import de.jan9103.wargearcore.internal_test.Test;
 import de.jan9103.wargearcore.internal_test.WgcInternalTests;
-import net.minecraft.server.v1_15_R1.PacketPlayOutPosition;
+import net.minecraft.network.protocol.game.PacketPlayOutPosition;
 
 public class WgcCommand implements CommandExecutor,TabCompleter {
 	@Override public boolean onCommand(CommandSender s,Command a1,String a2,String[] a){
@@ -70,20 +70,6 @@ public class WgcCommand implements CommandExecutor,TabCompleter {
 		case "debug":
 			for(User i:UserManager.loadedUsers()) s.sendMessage(i.getName());
 			return true;
-
-		case "crash": {
-			if(!root) return msg(u,s,"Missing Permission.",true);
-
-			if(a.length<2) return msg(u,s,"Syntax: /wgc forcekick (player)",true);
-
-			Player t=Bukkit.getPlayer(a[1]);
-			if(t==null) return msg(u,s,"Player not found..",true);
-
-			PacketPlayOutPosition pkg=new PacketPlayOutPosition(t.getLocation().getX(),(double)Integer.MAX_VALUE,t.getLocation().getZ(),0,0,EnumSet.allOf(PacketPlayOutPosition.EnumPlayerTeleportFlags.class),1);
-			((CraftPlayer)t).getHandle().playerConnection.sendPacket(pkg);
-			((CraftPlayer)t).getHandle().playerConnection.networkManager.handleDisconnection();
-			return true;
-		}
 
 		case "runtests":
 			if(!root) return msg(u,s,"Missing Permission.",true);
@@ -161,14 +147,11 @@ public class WgcCommand implements CommandExecutor,TabCompleter {
 		switch(a[0].toLowerCase()){
 		case "defence": o.add("ips"); break;
 
-		case "crash": return null;
-
 		case "setprofilepicture": o.add("<url>"); break;
 
 		case "":
 			o.add("defence");
 			if((s instanceof ConsoleCommandSender)||(s instanceof RemoteConsoleCommandSender)){
-				o.add("crash");
 				o.add("runtests");
 				o.add("reload");
 			}

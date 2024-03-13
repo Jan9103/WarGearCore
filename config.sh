@@ -11,7 +11,7 @@ CLASSPATH="/media/w/dependencies/spigot-1.15.2.jar"
 main='de.jan9103.wargearcore.WGC'
 
 # specific JDK file-path (has to contain bin/javac, bin/jar and bin/java)
-jdk='/usr/lib/jvm/java-11-openjdk-amd64'
+#jdk='/usr/lib/jvm/java-11-openjdk-amd64'
 
 # exlude files (regex)
 #exclude='

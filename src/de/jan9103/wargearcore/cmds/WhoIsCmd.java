@@ -36,9 +36,7 @@ import javax.imageio.ImageIO;
 import de.jan9103.java.utils.Curl;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.JSONValue;
+import de.jan9103.java.utils.json.*;
 
 import de.jan9103.wargearcore.LogHandler;
 import de.jan9103.wargearcore.User;
@@ -81,13 +79,13 @@ public class WhoIsCmd extends AsyncUserCmd {
 			if(js.isEmpty()){
 				new Msg(u).b("Invalid target.").a(p); return;
 			}
-			final JSONArray jsa=(JSONArray)JSONValue.parseWithException(js);
-			for(final Object o:jsa)
-				if(o instanceof JSONObject){
-					final JSONObject i=(JSONObject)o;
-					m.d().a(" - "+i.get("name").toString());
+			final JsonArray jsa=(JsonArray)new JsonDecoder(js).json;
+			for(final Json o:jsa)
+				if(o instanceof JsonDict){
+					JsonDict i=(JsonDict)o;
+					m.d().a(" - "+((JsonValue)i.get("name")).asStr());
 					if(i.containsKey("changedToAt")){
-						final Long l=(Long)i.get("changedToAt");
+						final Long l=((JsonValue)i.get("changedToAt")).asLong();
 						if(l!=null)
 							m.a(" since "+WGC.sdf.format(new Date(l))); // out+= ..
 					}

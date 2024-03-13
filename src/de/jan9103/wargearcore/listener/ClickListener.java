@@ -35,14 +35,14 @@ import org.bukkit.block.BlockFace;
 import org.bukkit.block.data.BlockData;
 import org.bukkit.block.data.Openable;
 import org.bukkit.block.data.type.Switch;
-import org.bukkit.craftbukkit.v1_15_R1.CraftWorld;
+import org.bukkit.craftbukkit.v1_20_R3.CraftWorld;
 import org.bukkit.event.player.PlayerInteractEvent;
 
 import de.jan9103.wargearcore.User;
 import de.jan9103.wargearcore.UserManager;
 import de.jan9103.wargearcore.WGC;
 import de.jan9103.wargearcore.chat.Msg;
-import net.minecraft.server.v1_15_R1.BlockPosition;
+import net.minecraft.core.BlockPosition;
 
 public class ClickListener {
 	public static HashMap<UUID,Block>bs=new HashMap<>();
@@ -103,18 +103,33 @@ public class ClickListener {
 			case JUNGLE_DOOR:
 			case ACACIA_DOOR:
 			case DARK_OAK_DOOR:
+			case MANGROVE_DOOR:
+			case CHERRY_DOOR:
+			case BAMBOO_DOOR:
+			case CRIMSON_DOOR:
+			case WARPED_DOOR:
 			case OAK_FENCE_GATE:
 			case SPRUCE_FENCE_GATE:
 			case BIRCH_FENCE_GATE:
 			case JUNGLE_FENCE_GATE:
 			case ACACIA_FENCE_GATE:
 			case DARK_OAK_FENCE_GATE:
+			case MANGROVE_FENCE_GATE:
+			case CHERRY_FENCE_GATE:
+			case BAMBOO_FENCE_GATE:
+			case CRIMSON_FENCE_GATE:
+			case WARPED_FENCE_GATE:
 			case OAK_TRAPDOOR:
 			case SPRUCE_TRAPDOOR:
 			case BIRCH_TRAPDOOR:
 			case JUNGLE_TRAPDOOR:
 			case ACACIA_TRAPDOOR:
-			case DARK_OAK_TRAPDOOR: {
+			case DARK_OAK_TRAPDOOR:
+			case MANGROVE_TRAPDOOR:
+			case CHERRY_TRAPDOOR:
+			case BAMBOO_TRAPDOOR:
+			case CRIMSON_TRAPDOOR:
+			case WARPED_TRAPDOOR: {
 				final Openable td=(Openable)b.getBlockData();
 				td.setOpen(!td.isOpen());
 				b.setBlockData(td);
@@ -130,7 +145,11 @@ public class ClickListener {
 			case JUNGLE_BUTTON:
 			case ACACIA_BUTTON:
 			case BIRCH_BUTTON:
-			case SPRUCE_BUTTON: {
+			case SPRUCE_BUTTON:
+			case MANGROVE_BUTTON:
+			case CHERRY_BUTTON:
+			case CRIMSON_BUTTON:
+			case WARPED_BUTTON: {
 				final Switch a=(Switch)b.getBlockData();
 				a.setPowered(true);
 				b.setBlockData(a);
@@ -155,7 +174,7 @@ public class ClickListener {
 	}
 
 	private static void hbu(Block b){
-		((CraftWorld)b.getWorld()).getHandle().removeTileEntity(new BlockPosition(b.getX(),b.getY(),b.getZ()));
+		// ((CraftWorld)b.getWorld()).getHandle().removeTileEntity(new BlockPosition(b.getX(),b.getY(),b.getZ()));
 		final Material  m =b.getType();
 		final BlockData bd=b.getBlockData();
 

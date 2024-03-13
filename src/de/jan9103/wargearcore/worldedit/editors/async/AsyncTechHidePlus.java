@@ -30,12 +30,12 @@ import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.block.TileState;
-import org.bukkit.craftbukkit.v1_15_R1.CraftWorld;
+import org.bukkit.craftbukkit.v1_20_R3.CraftWorld;
 
 import de.jan9103.wargearcore.coordSys.BigArea;
 import de.jan9103.wargearcore.util.TPS;
 import de.jan9103.wargearcore.worldedit.editors.WeSender;
-import net.minecraft.server.v1_15_R1.BlockPosition;
+import net.minecraft.core.BlockPosition;
 
 public class AsyncTechHidePlus extends AsyncEditor3 {
 	private final CraftWorld cw;
@@ -121,7 +121,7 @@ public class AsyncTechHidePlus extends AsyncEditor3 {
 					case JUNGLE_WALL_SIGN:
 					case ACACIA_SIGN:
 					case ACACIA_WALL_SIGN: {
-						if(b.getState() instanceof TileState) cw.getHandle().removeTileEntity(new BlockPosition(x,y,z));
+						// if(b.getState() instanceof TileState) cw.getHandle().removeTileEntity(new BlockPosition(x,y,z));
 						continue;
 					}
 

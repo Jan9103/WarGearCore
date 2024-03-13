@@ -22,8 +22,6 @@ verloren!
 
 Mode           | Argumente | Beschreibung
 -------------- | --------- | -------------------------------------------------------
-ExplosionPoint |           | Eine temporäre Markierung am Explosionsort
-trail          |           | Ein temporäre Flugbahn Markierung
 OVerview       | v r       | Eine stark reduzierter Normal-Mode
 NORMal         | v r       | Die Positionen von TNT zu den Ticks.
 dot            | v r d     | Norm + Update Positionen (mit filtern)

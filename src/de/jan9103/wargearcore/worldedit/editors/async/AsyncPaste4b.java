@@ -28,7 +28,7 @@ package de.jan9103.wargearcore.worldedit.editors.async;
 import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.block.TileState;
-import org.bukkit.craftbukkit.v1_15_R1.CraftWorld;
+import org.bukkit.craftbukkit.v1_20_R3.CraftWorld;
 
 import de.jan9103.wargearcore.area.ATheme;
 import de.jan9103.wargearcore.area.ATheme.THM;
@@ -38,7 +38,7 @@ import de.jan9103.wargearcore.worldedit.clip.ClipboardBlock;
 import de.jan9103.wargearcore.worldedit.clip.TCB;
 import de.jan9103.wargearcore.worldedit.editors.Undo;
 import de.jan9103.wargearcore.worldedit.editors.WeSender;
-import net.minecraft.server.v1_15_R1.BlockPosition;
+import net.minecraft.core.BlockPosition;
 
 /**
  * ONLY CALL ASYNC !!
@@ -60,7 +60,7 @@ public class AsyncPaste4b extends AsyncEditor3 {
 					final ClipboardBlock b=c.clip[x-xl][y-yl][z-zl];
 					if(b==null) continue;
 					final Block a=w.getBlockAt(x,y,z);
-					if(a.getState() instanceof TileState) cw.getHandle().removeTileEntity(new BlockPosition(x,y,z));
+					//if(a.getState() instanceof TileState) cw.getHandle().removeTileEntity(new BlockPosition(x,y,z));
 					if(b instanceof TCB){
 						((TCB)b).blockPaste(w.getBlockAt(x,y,z),thm1,thm2,true); continue;
 					}

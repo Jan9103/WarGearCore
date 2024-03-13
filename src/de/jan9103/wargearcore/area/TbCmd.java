@@ -36,7 +36,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
 import org.bukkit.entity.Player;
 
-import com.google.common.base.Enums;
+// import com.google.common.base.Enums;
 
 import de.jan9103.wargearcore.User;
 import de.jan9103.wargearcore.WGC;
@@ -213,8 +213,11 @@ public class TbCmd extends UserOnlyCmd implements TabExecutor {
 		    case "m":
 		    case "massiv":
 			    if(a.length>2){
-				    BlockFace dir=Enums.getIfPresent(BlockFace.class,a[2]).orNull();
-				    if(dir!=null) return new MassivS(dir);
+						for (BlockFace dir:BlockFace.values())
+							if (dir.name().equalsIgnoreCase(a[2]))
+								return new MassivS(dir);
+				    // BlockFace dir=Enums.getIfPresent(BlockFace.class,a[2]).orNull();
+				    // if(dir!=null) return new MassivS(dir);
 			    }
 			    if(p==null) return null;
 
@@ -225,8 +228,11 @@ public class TbCmd extends UserOnlyCmd implements TabExecutor {
 		    case "artox":
 		    case "ax":
 			    if(a.length>2){
-				    BlockFace dir=Enums.getIfPresent(BlockFace.class,a[2]).orNull();
-				    if(dir!=null) return new ArtoxS(dir,plus);
+						for (BlockFace dir:BlockFace.values())
+							if (dir.name().equalsIgnoreCase(a[2]))
+								return new ArtoxS(dir, plus);
+				    // BlockFace dir=Enums.getIfPresent(BlockFace.class,a[2]).orNull();
+				    // if(dir!=null) return new ArtoxS(dir,plus);
 			    }
 			    if(p==null) return null;
 

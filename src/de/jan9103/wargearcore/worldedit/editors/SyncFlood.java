@@ -29,10 +29,10 @@ import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.block.data.Waterlogged;
-import org.bukkit.craftbukkit.v1_15_R1.CraftWorld;
+import org.bukkit.craftbukkit.v1_20_R3.CraftWorld;
 
 import de.jan9103.wargearcore.coordSys.BigArea;
-import net.minecraft.server.v1_15_R1.BlockPosition;
+import net.minecraft.core.BlockPosition;
 
 public class SyncFlood {
 	public static void b(World w,BigArea a){
@@ -46,7 +46,7 @@ public class SyncFlood {
 						w.getBlockAt(x,y,z).setType(Material.WATER,false); continue;
 					}
 					if(!i.getType().isSolid()){
-						cw.getHandle().removeTileEntity(new BlockPosition(x,y,z));
+						// cw.getHandle().removeTileEntity(new BlockPosition(x,y,z));
 						w.getBlockAt(x,y,z).setType(Material.WATER,false); continue;
 					}
 					if(i.getBlockData() instanceof Waterlogged){

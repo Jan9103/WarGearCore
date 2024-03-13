@@ -27,10 +27,6 @@ eingerichteten Discord Channel.
 Spieler können die `root` permission über [config Dateien](#files) erhalten und sind somit geschützt
 gegenüber kicks, etc.
 
-## Forcekick
-
-`/wgc crash NAME` crasht minecraft
-
 ## Liste deine IPs auf
 
 Dies kann gut sein um festzustellen ob jemand anderes sich als dich ausgegeben hat.

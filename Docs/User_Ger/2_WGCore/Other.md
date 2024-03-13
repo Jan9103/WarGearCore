@@ -61,18 +61,6 @@ ausgetauscht.
 
 ---
 
-## NPCs
-
-Es gibt ein simpls NPC system:
-
-`/npc add NAME`
-
-`/npc remove NAME`
-
-`/npc list`
-
----
-
 ## Bugreport
 
 Wenn du ein Problem mit WGC findest kannst du es mittels `/wgcbug BESCHRIBUNG` melden

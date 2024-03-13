@@ -25,14 +25,17 @@
  */
 package de.jan9103.wargearcore.chat;
 
-import org.bukkit.craftbukkit.v1_15_R1.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_20_R3.entity.CraftPlayer;
 import org.bukkit.entity.Player;
+import net.minecraft.network.protocol.Packet;
+import net.md_5.bungee.api.chat.TextComponent;
+import net.md_5.bungee.chat.ComponentSerializer;
 
 import de.jan9103.wargearcore.User;
 import de.jan9103.wargearcore.WGC;
-import net.minecraft.server.v1_15_R1.IChatBaseComponent;
-import net.minecraft.server.v1_15_R1.IChatBaseComponent.ChatSerializer;
-import net.minecraft.server.v1_15_R1.PacketPlayOutChat;
+import net.minecraft.network.chat.IChatBaseComponent;
+import net.minecraft.network.chat.IChatBaseComponent.ChatSerializer;
+import net.minecraft.network.protocol.game.ClientboundSystemChatPacket;
 
 public class Msg {
 	public static final String RUN="run_command",SUGGEST="suggest_command",URL="open_url",COPY="copy_to_clipboard";
@@ -67,10 +70,7 @@ public class Msg {
 	}
 
 	private void send(Player p,String s){
-		final IChatBaseComponent comp=ChatSerializer.a(s);
-		final PacketPlayOutChat  chat=new PacketPlayOutChat(comp);
-
-		((CraftPlayer)p).getHandle().playerConnection.sendPacket(chat);
+		p.spigot().sendMessage(ComponentSerializer.parse(s));
 	}
 
 	/**NORMAL*/
