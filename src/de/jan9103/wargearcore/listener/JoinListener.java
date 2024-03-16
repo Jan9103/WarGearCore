@@ -83,7 +83,6 @@ public class JoinListener implements Listener {
 			for(WgArea i:WgArea.areas) m.d().aC(i.name,Msg.RUN,"/a tp "+i.name,"tp");
 			m.d("\n======== ").a("Online").d(" ========");
 			for(final User i:UserManager.loadedUsers()) m.d().a(i.getName()+(i.curAr==null?"":" ("+i.curAr.name+")"));
-			if(!u.pre16) m.aC("\nNOTE: you currently use the 1.16+ Chat.",Msg.RUN,"/settings","Open User-Settings");
 			if(!u.saveUndo) m.aC("\nWARNING: WGE-undo-history is deactivated!",Msg.RUN,"/undo on","re-activate");
 			m.a(p);
 			break;

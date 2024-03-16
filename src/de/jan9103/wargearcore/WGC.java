@@ -320,7 +320,7 @@ public class WGC extends JavaPlugin {
 		TraceTnt.noLoss   =i.gb("tracer.noDataLossOnModeswitch",false);
 		autoBugReportLog  =i.gb("autoBugReport",false);
 		bugReportDWH      =i.gs("BugReportDiscordWebHookUrl","");
-		advancedScoreboard=i.gb("advancedScoreboard",false);
+		advancedScoreboard=i.gb("advancedScoreboard",true);
 		serverListPlus    =i.gb("serverListPlus",false);
 		ads=i.gb("ads",false);
 		discoverytracker        =i.gb("discoverytracker",false);

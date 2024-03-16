@@ -40,6 +40,7 @@ import org.bukkit.block.BlockFace;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
+import de.jan9103.wargearcore.area.WGC;
 import de.jan9103.wargearcore.area.WgArea;
 import de.jan9103.wargearcore.chat.ChatColor;
 import de.jan9103.wargearcore.chat.ChatTheme;
@@ -92,7 +93,7 @@ public class User implements WeSender,Fighter {
 	/** forgot.. TODO */
 	public boolean rtlr=true;
 	/** online with a pre 1.16 mc version (used for chat json and colors) */
-	public boolean pre16=true;
+	public boolean pre16=false;
 	/** if false WGE is faster, but has no undo */
 	public boolean saveUndo=true;
 	/** CHAT: make unicode emojis out of ascii emojis */
@@ -247,7 +248,7 @@ public class User implements WeSender,Fighter {
 		volume          =c.gba("volume",new byte[] {100,100,100,100,100,100});
 		rtlr            =c.gb("respond",true);
 		ct              =ChatColor.fromInt(c.gi("chattheme",2));
-		pre16           =c.gb("pre16",true);
+		pre16           =c.gb("pre16",false);
 		saveUndo        =c.gb("undo",true);
 		name            =c.gs("name","#NoNamePlayer");
 		emoji           =c.gb("emoji",true);
@@ -258,7 +259,7 @@ public class User implements WeSender,Fighter {
 		root            =c.gb("root",false);
 		joinPanel       =(byte)c.gi("joinPanel",2);
 		joinTodoInfoDays=(byte)c.gi("joinToDoInfoDays",3);
-		authPwMode      =c.gby("authmode",(byte)1);
+		authPwMode      =c.gby("authmode",(WGC.wgcDefence_auth?1:0));
 		profilePic      =c.gs("pictureUrl","https://crafatar.com/avatars/"+uuid.toString());
 		regex           =c.gb("regex",false);
 		special_blocks  =c.gb("special_blocks",false);
