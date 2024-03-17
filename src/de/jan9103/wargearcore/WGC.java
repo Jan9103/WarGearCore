@@ -181,8 +181,8 @@ public class WGC extends JavaPlugin {
 	}
 
 	@Override public void onEnable(){
-		if(!getServer().getVersion().contains("1.20")){
-			Bukkit.getLogger().log(Level.WARNING,"This Version of WGC is only ment for Bukkit-1.20 - nothing newer or older -- please use another version of the plugin or server. Server Version: "+getServer().getVersion()); return;
+		if(!getServer().getVersion().contains("1.19")){
+			Bukkit.getLogger().log(Level.WARNING,"This Version of WGC is only ment for Bukkit-1.19 - nothing newer or older -- please use another version of the plugin or server. Server Version: "+getServer().getVersion()); return;
 		}
 		if(reload){
 			TPS.a(5);

@@ -40,7 +40,7 @@ build/spigot/BuildTools.jar:
 
 build/spigot/server.jar: build/spigot/BuildTools.jar
 	mkdir -p build/spigot/cache
-	cd build/spigot/cache && java -jar ../BuildTools.jar --output-dir .. --nogui --final-name server.jar --rev 1.20.4
+	cd build/spigot/cache && java -jar ../BuildTools.jar --output-dir .. --nogui --final-name server.jar --rev 1.19.4
 
 build/spigot/spigot.jar: build/spigot/server.jar
 	unzip -p $< "META-INF/versions/spigot-*.jar" > $@

@@ -25,7 +25,7 @@
  */
 package de.jan9103.wargearcore.chat;
 
-import org.bukkit.craftbukkit.v1_20_R3.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_19_R3.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import net.minecraft.network.protocol.Packet;
 import net.md_5.bungee.api.chat.TextComponent;

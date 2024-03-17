@@ -29,7 +29,7 @@ import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.block.data.Waterlogged;
-import org.bukkit.craftbukkit.v1_20_R3.CraftWorld;
+import org.bukkit.craftbukkit.v1_19_R3.CraftWorld;
 
 import de.jan9103.wargearcore.coordSys.BigArea;
 import net.minecraft.core.BlockPosition;
