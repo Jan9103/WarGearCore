@@ -134,7 +134,6 @@ public abstract class FightMod {
 
 	/**
 	 * register a bukkit shedule.
-	 * !!! IF YOU USE THIS ALSO USE THIS TO CANCEL THEM !!!
 	 * @param shed the Bukkit thread shedule
 	 * @return shed
 	 */

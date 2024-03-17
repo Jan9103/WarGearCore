@@ -45,8 +45,8 @@ import de.jan9103.wgc.advancedFight.P;
 public class IceStorm extends FightMod implements Listener{
 	public IceStorm(Fight fyte,String[]a){
 		super(fyte);
-		maxBlocks=f.area.redWg.size()/1000;
-		maxBalls=maxBlocks/10;
+		maxBlocks=Integer.min(f.area.redWg.size()/1000, 10);
+		maxBalls=Integer.min(maxBlocks/10, 1);
 		y=f.area.redWg.high.y+f.area.ausfahrm+10;
 	}
 	private ArrayList<FallingBlock>blocks=new ArrayList<>();
