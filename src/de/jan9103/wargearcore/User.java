@@ -40,7 +40,7 @@ import org.bukkit.block.BlockFace;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-import de.jan9103.wargearcore.area.WGC;
+import de.jan9103.wargearcore.WGC;
 import de.jan9103.wargearcore.area.WgArea;
 import de.jan9103.wargearcore.chat.ChatColor;
 import de.jan9103.wargearcore.chat.ChatTheme;
@@ -259,7 +259,7 @@ public class User implements WeSender,Fighter {
 		root            =c.gb("root",false);
 		joinPanel       =(byte)c.gi("joinPanel",2);
 		joinTodoInfoDays=(byte)c.gi("joinToDoInfoDays",3);
-		authPwMode      =c.gby("authmode",(WGC.wgcDefence_auth?1:0));
+		authPwMode      =c.gby("authmode",(byte)(WGC.wgcDefence_auth?1:0));
 		profilePic      =c.gs("pictureUrl","https://crafatar.com/avatars/"+uuid.toString());
 		regex           =c.gb("regex",false);
 		special_blocks  =c.gb("special_blocks",false);
