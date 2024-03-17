@@ -136,7 +136,7 @@ public class WGC extends JavaPlugin {
 	/** Dateformat: dd.MM.yyyy */
 	public static final SimpleDateFormat sdfDay=new SimpleDateFormat("dd.MM.yyyy");
 	/** WGC version number (used for auto-updates, etc) */
-	public static final byte VERSION=15;
+	public static final byte VERSION=16;
 	/** discord log webhook url */
 	private static String dcLogUrl="";
 	public static LogHandler logHandler=new LogHandler();
