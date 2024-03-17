@@ -42,6 +42,7 @@ public class SimpReloadCmd extends UserOnlyCmd {
 			new Msg(u,WGC._PREFIX_2_Edit).b("Missing Argument.").d().b("/sr save - copies tnt in WGE-Selection").d().b("/sr paste - paste").d().b("   or Left clicking (without sneaking) with a shear.").a(p); return;
 		}
 		switch(a[0].toLowerCase()){
+		case "copy":
 		case "save": {
 			if(!u.getWE().isset()){
 				new Msg(u,WGC._PREFIX_2_Edit).b("Select an area first.").a(p);
