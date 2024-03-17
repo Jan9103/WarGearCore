@@ -44,7 +44,7 @@ public class RandomizerMod extends FightMod{
 	public RandomizerMod(Fight fyte,int speed){super(fyte);this.speed=speed;}
 	public RandomizerMod(Fight fyte,String[]a)throws FightModConstructorException{
 		super(fyte);
-		int s=200;
+		int s=1000;
 		if(a.length>3)
 			try{s=Integer.parseInt(a[3]);
 			}catch(NumberFormatException e){throw new FightModConstructorException("Thats not a valid number..");}
@@ -66,11 +66,11 @@ public class RandomizerMod extends FightMod{
 				return;}
 			case 2:{
 				f.bc("Reverse Gravity!");
-				PotionEffect pi=new PotionEffect(PotionEffectType.LEVITATION,80,0);
+				PotionEffect pi=new PotionEffect(PotionEffectType.LEVITATION,80,1,true,false,false);
 				f.allAliveUsers((i)->i.getPlayer().addPotionEffect(pi));
 				return;}
 			default:{ // speed effect
-				PotionEffect pi=new PotionEffect(PotionEffectType.SPEED,100,0);
+				PotionEffect pi=new PotionEffect(PotionEffectType.SPEED,100,1,true,false,false);
 				f.bc("Lets hurry for a bit.");
 				f.allAliveUsers((i)->i.getPlayer().addPotionEffect(pi));
 				return;}
