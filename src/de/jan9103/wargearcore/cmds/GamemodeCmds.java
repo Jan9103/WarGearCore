@@ -33,7 +33,6 @@ import de.jan9103.wargearcore.chat.Msg;
 
 public class GamemodeCmds extends UserOnlyCmd {
 	@Override public void exe(String[] a,User u,Player p){
-		System.out.println("GAMEMODE");
 		if(a.length<1){
 			if(p.getGameMode()==GameMode.CREATIVE){
 				p.setGameMode(GameMode.SPECTATOR);

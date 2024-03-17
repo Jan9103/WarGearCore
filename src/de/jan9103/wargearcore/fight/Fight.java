@@ -69,7 +69,7 @@ public class Fight {
 	public final FightTeam red;
 	public final FightTeam blu;
 	public HashSet<FightMod>activeMods=new HashSet<>();
-	private boolean buWR,redProt;
+	private boolean buWR;
 	public int countdownLength=60;
 	public Objective pl,gm;
 	public FightState state;
@@ -95,7 +95,6 @@ public class Fight {
 	//TODO fight-setting-preset loader
 	public void start(){
 		buWR   =area.waterremover;
-		redProt=area.bluProt;
 		playerWorldModAllowed=false;
 		FightListener fl=new FightListener(this);
 
@@ -181,7 +180,6 @@ public class Fight {
 //		if(fwml!=null){HandlerList.unregisterAll(fwml);fwml=null;}
 		for(final FightMod i:activeMods) i.fightEnd();
 		playSound(SoundKategory.FIGHT_BASE,Sound.EVENT_RAID_HORN,-5);
-		area.bluProt     =redProt;
 		area.waterremover=buWR;
 		area.bluProtOn();
 		area.prot();

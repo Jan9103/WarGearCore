@@ -335,27 +335,27 @@ public class WgArea {
 	}
 
 	public void bluProtOn(){
-		if(!WGC.advancedScoreboard) return;
-
 		if(bluProt) return;
 
 		bluProt=true;
 		bc(new BcMsg(WGC._PREFIX_2_Area).a("Protection activated."));
-		sb.resetScores(_sb_prot+_sb_off);
-		info.getScore(_sb_prot+_sb_on).setScore(6);
+		if(WGC.advancedScoreboard) {
+			sb.resetScores(_sb_prot+_sb_off);
+			info.getScore(_sb_prot+_sb_on).setScore(6);
+		}
 		bcSound(SoundKategory.AREA_STATE_CHANGE,Sound.ITEM_ARMOR_EQUIP_LEATHER,0.7f);
 	}
 
 	public void bluProtOff(){
-		if(!WGC.advancedScoreboard) return;
-
 		if(!bluProt) return;
 
 		backUp(new File(WGC.dataFolder+"/backup/"+System.currentTimeMillis()+"/"),true,WGC.mins());
 		bluProt=false;
 		bc(new BcMsg(WGC._PREFIX_2_Area).a("Protection deactivated."));
-		sb.resetScores(_sb_prot+_sb_on);
-		info.getScore(_sb_prot+_sb_off).setScore(6);
+		if(WGC.advancedScoreboard) {
+			sb.resetScores(_sb_prot+_sb_on);
+			info.getScore(_sb_prot+_sb_off).setScore(6);
+		}
 		bcSound(SoundKategory.AREA_STATE_CHANGE,Sound.BLOCK_WOOL_BREAK,0.2f);
 	}
 

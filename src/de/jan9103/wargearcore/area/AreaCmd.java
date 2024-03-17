@@ -332,209 +332,32 @@ public class AreaCmd extends UserOnlyCmd implements TabExecutor {
 
 		case "tp":
 		case "t": {
-			boolean t1=false,t2=false,t3=false,wg=false,mwg=false,custom=false,allSz=true,
-				perm=!p.hasPermission("wgc.wga.unrestricted"),privateOnly=false;
 			/** trilians */
 			byte   tnt=2,freeze=2,playerthere=-1,fight=-1;
 			World  world=null;
 			String regex=null,iregex=null;
-			for(int i=1; i<a.length; i++){
-				if(a[i].charAt(0)=='-')
-					switch(a[i].toLowerCase()){
-					case "-t1":
-					case "-1": allSz=false; t1=true; continue;
-
-					case "-t2":
-					case "-2": allSz=false; t1=true; continue;
-
-					case "-t3":
-					case "-3": allSz=false; t1=true; continue;
-
-					case "-wg": allSz=false; t1=true; continue;
-
-					case "-mwg": allSz=false; t1=true; continue;
-
-					case "-custom":
-					case "-c": allSz=false; t1=true; continue;
-
-					case "-fight":
-					case "-f": fight=1; continue;
-
-					case "-nofight":
-					case "-nf": fight=0; continue;
-
-					case "-hasplayer":
-					case "-hp": playerthere=1; continue;
-
-					case "-hasnoplayer":
-					case "-hnp": playerthere=0; continue;
-
-					case "-frozen": freeze=1; continue;
-
-					case "-thawed": freeze=0; continue;
-
-					case "-tnt": tnt=1; continue;
-
-					case "-ntnt":
-					case "-notnt": tnt=0; continue;
-
-					case "-public": perm=false; continue;
-
-					case "-private": privateOnly=true; continue;
-
-					case "-thisworld":
-					case "-tw": world=p.getWorld(); continue;
-
-					case "-world":
-						if(a.length==++i){
-							new Msg(u).b("Missing argument (worldname)..").a(p); return;
-						}
-						world=Bukkit.getWorld(a[i]);
-						if(world==null){
-							new Msg(u).b("Unknown World..").a(p); return;
-						}
-						continue;
-
-					case "-regex":
-					case "-r":
-						if(a.length==++i){
-							new Msg(u).b("Missing argument (regex)..").a(p); return;
-						}
-						regex=a[i];
-						continue;
-
-					case "-iregex":
-					case "-ir":
-						if(a.length==++i){
-							new Msg(u).b("Missing argument (regex)..").a(p); return;
-						}
-						iregex=a[i];
-						continue;
-
-					case "-h":
-					case "-help":
-						new Msg(u).a("Syntax: /a t [args or area name]")
-						.d().a("Area Name: leave empty for a list of options")
-						.d().a("Args (optional):")
-						.d().a("-t1 (-1) -t2 (-2) -t3 (-3) -wg -mwg -custom (-c): select which sizes are listed (multiple possible)")
-						.d().a("-fight (-f) -nofight (-nf): active fight?")
-						.d().a("-hasplayer (-hp) - hasnoplayer (-hnp): someone there?")
-						.d().a("-frozen -thawed: /freeze state")
-						.d().a("-tnt -notnt (-ntnt: /tnt state")
-						.d().a("-public: only list areas with unrestricted access")
-						.d().a("-private: only list areas with restricted access")
-						.d().a("-thisworld (-tw) -world (name): filter by world (multiverse)")
-						.d().a("-regex (-r): regex filter the name")
-						.d().a("-iregex (-ir): name should not match this regex (can coexist with regex)")
-						.d().a("-help (-h): this help menu")
-						.a(p);
-						return;
-					}
-				else{
-					final WgArea wga=WgArea.get(a[1]);
-					if(wga==null){
-						new Msg(u,WGC._PREFIX_2_Area).b("Invalid (or unloaded) area name.").a(p); return;
-					}
-					if(wga.restrictedAccess&&!perm){
-						new Msg(u,WGC._PREFIX_2_Area).b("Missing permissions.").a(p); return;
-					}
-					u.tp(new Location(wga.w,wga.mid.x,wga.mid.y,wga.mid.z));
-					new Msg(u,WGC._PREFIX_2_Area).a("Teleportet.").a(p);
+			if(a.length>1){
+				final WgArea wga=WgArea.get(a[1]);
+				if(wga==null){
+					new Msg(u,WGC._PREFIX_2_Area).b("Invalid (or unloaded) area name.").a(p); return;
 				}
+				if(wga.restrictedAccess&&!p.hasPermission("wgc.wga.unrestricted")){
+					new Msg(u,WGC._PREFIX_2_Area).b("Missing permissions.").a(p); return;
+				}
+				u.tp(new Location(wga.w,wga.mid.x,wga.mid.y,wga.mid.z));
+				new Msg(u,WGC._PREFIX_2_Area).a("Teleportet.").a(p);
+				return;
 			}
 			ArrayList<WgArea>as=new ArrayList<>();
+			final boolean perm = p.hasPermission("wgc.wga.unrestricted");
 			arealoop : for(WgArea i : WgArea.areas){
-				if(i.restrictedAccess&&!perm){
-					System.out.println("restricted"); continue;
-				}
-				if(!allSz)
-					switch(i.bluWg.xSize()){
-					case 23: if(!t1){
-							System.out.println("sz"); continue;
-					}
-						break;
-
-					case 37: if(!mwg){
-							System.out.println("sz"); continue;
-					}
-						break;
-
-					case 45: if(!t2){
-							System.out.println("sz"); continue;
-					}
-						break;
-
-					case 67:
-						switch(i.ausfahrm){
-						case 20: if(!wg){
-								System.out.println("sz"); continue;
-						}
-							break;
-
-						case 16: if(!t3){
-								System.out.println("sz"); continue;
-						}
-							break;
-
-						default: if(!custom){
-								System.out.println("sz"); continue;
-						}
-						}
-						break;
-
-					default: if(!custom){
-							System.out.println("sz"); continue;
-					}
-					}
-				if(privateOnly&&!i.restrictedAccess){
-					System.out.println("private only"); continue;
-				}
-				if(!trilian(freeze,i.isFrozen())){
-					System.out.println("frozen"); continue;
-				}
-				if(!trilian(tnt,i.isntProt())){
-					System.out.println("tnt"); continue;
-				}
-				if(world!=null) if(i.w!=world){
-						System.out.println("world"); continue;
-					}
-				if(fight!=-1) if(!trilian(fight,i.fight.hasPlayer())){
-						System.out.println("fight"); continue;
-					}
-				if(playerthere!=-1){
-					if(playerthere==0){
-						for(User ui:UserManager.loadedUsers())
-							if(ui.curAr==i){
-								System.out.println("pt1"); continue arealoop;
-							}
-					}
-					else{
-						boolean t=false;
-						for(User ui:UserManager.loadedUsers())
-							if(ui.curAr==i){
-								t=true; break;
-							}
-						if(!t){
-							System.out.println("pt"); continue;
-						}
-					}
-				}
-				if(regex!=null) if(!i.name.matches(regex)){
-						System.out.println("r"); continue;
-					}
-				if(iregex!=null) if(i.name.matches(iregex)){
-						System.out.println("ir"); continue;
-					}
-				System.out.println("passed!");
+				if(i.restrictedAccess&&!perm){continue;}
 				as.add(i);
 			}
-
 			if(as.isEmpty()){
 				new Msg(u,WGC._PREFIX_2_Area).a("No area found.").a(p); return;
 			}
-
 			as.sort(areaComparator);
-
 			if(as.size()>54){
 				//TODO CHAT
 				Msg m=new Msg(u,WGC._PREFIX_2_Area).a("Area search-result:");
@@ -548,18 +371,13 @@ public class AreaCmd extends UserOnlyCmd implements TabExecutor {
 				for(final WgArea z:as)
 					switch(z.bluWg.xSize()){
 					case 23: b.addOption(Material.CONDUIT,z.name); continue;
-
 					case 37: b.addOption(Material.END_STONE_BRICK_SLAB,z.name); continue;
-
 					case 45: b.addOption(Material.END_PORTAL_FRAME,z.name); continue;
-
 					case 67:
 						switch(z.ausfahrm){
 						case 20: b.addOption(Material.END_STONE_BRICKS,z.name); continue;
-
 						case 16: b.addOption(Material.END_STONE,z.name); continue;
 						}
-
 					default: b.addOption(Material.ENDER_PEARL,z.name);
 					}
 				b.build(new GuiTpHandler(WgArea.areas.size()-1));
@@ -936,11 +754,6 @@ public class AreaCmd extends UserOnlyCmd implements TabExecutor {
 			o.add("tp");
 			o.add("waterremover");
 			o.add("reset");
-			o.add("tpt1");
-			o.add("tpt2");
-			o.add("tpt3");
-			o.add("tpmwg");
-			o.add("tpwg");
 			o.add("list");
 			if(cs.hasPermission("wgc.wga.admin")){
 				o.add("restrict");
