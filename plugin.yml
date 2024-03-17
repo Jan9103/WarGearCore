@@ -119,6 +119,7 @@ commands:
  "fight":
   dscription: A fight plugin (not completly finished)
   permission: wgc.fight.base
+  aliases: ["wgcfight"]
  "wgcauth":
   usage: /<command> setpw (pw) (pw)
   description: account security
