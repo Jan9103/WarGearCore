@@ -92,6 +92,9 @@ public class FightCmd extends UserOnlyCmd implements TabCompleter {
 			return;
 
 		case "cancel":
+			if(!p.hasPermission("wgc.fight.admin")){
+				new Msg(u).b("Missing Permission \"wgc.fight.admin\"").a(p); return;
+			}
 			f.end();
 			new Msg(u,WGC._PREFIX_2_Fight).a("Fight cancelled.").a(p);
 			return;

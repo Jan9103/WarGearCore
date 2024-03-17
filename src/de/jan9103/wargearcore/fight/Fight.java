@@ -178,7 +178,10 @@ public class Fight {
 				HandlerList.unregisterAll(i);
 		tmpListener.clear();
 //		if(fwml!=null){HandlerList.unregisterAll(fwml);fwml=null;}
-		for(final FightMod i:activeMods) i.fightEnd();
+		for(final FightMod i:activeMods) {
+			i.fightEnd();
+			i.stopAllShedules();
+		}
 		playSound(SoundKategory.FIGHT_BASE,Sound.EVENT_RAID_HORN,-5);
 		area.waterremover=buWR;
 		area.bluProtOn();

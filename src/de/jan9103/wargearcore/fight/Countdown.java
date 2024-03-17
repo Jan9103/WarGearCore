@@ -34,11 +34,8 @@ public class Countdown {
 	private int shedule;
 	public Countdown(Fight f,int length,int speed){
 		if(speed<1) return;
-
 		if(length<1) return;
-
 		if(f==null) return;
-
 		i      =length;
 		shedule=Bukkit.getScheduler().scheduleSyncRepeatingTask(WGC.wgc,()->{
 			i--; f.setLevel(i);
@@ -48,4 +45,5 @@ public class Countdown {
 			}
 		},speed,speed);
 	}
+	public int getShedule() {return shedule;}
 }
