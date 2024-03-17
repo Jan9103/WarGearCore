@@ -54,34 +54,13 @@ public class JoinMsgPanel {
 		case 1:        //JAN
 			switch(ld.getDayOfMonth()){
 			case 1: motd="Happy new Year!"; break;
-
-			case 7: motd="__WGL_2018__"; break;
-
-			case 9: motd="Hello World!"; break;
-
-			case 18: motd=(ld.getYear()-2015)+" years since Sandman.."; break;
-
-			case 28: motd="Today is data protection day."; break;
 			}
 			break;
 
 		case 2:        //FEB
 			switch(ld.getDayOfMonth()){
-			case 6: motd="WGL-2016 anniversary."; break;
-
 			case 23: event=16; break;
-
 			case 26: motd="WargearWorld was founded "+(ld.getYear()-2020)+" year ago."; break;
-			}
-			break;
-
-		case 3:                                                               //MAR
-			switch(ld.getDayOfMonth()){
-			case 1: motd="International Zero Discrimination Day."; break; //TODO pride flag
-
-			case 31:
-				event=3;
-				motd =".:WGL 2017:."; break;
 			}
 			break;
 
@@ -98,98 +77,58 @@ public class JoinMsgPanel {
 				case 3: motd="MCIV is coming back!"; event=17; break;
 				}
 
-			case 6:
-				event=8;
-				switch(i){
-				case 0: motd="\u2660"; break;
-
-				case 1: motd="Watch out denmark!"; break;
-
-				case 2: motd="ever heard of Garlic Bread?"; break;
-
-				case 3: motd="International Ace Day ;)"; break;
-				}
+			case 6: event=8; break;
 
 			case 16: motd="MCIV v1 is now "+(ld.getYear()-2012)+" years old."; event=17; break;
 
-			case 26: event=6; motd="Today is the Lesbian visibility day. \u2640\u2640"; break;             //2 female symbols
+			case 26: event=6; break;
 			}
 			break;
 
 		case 5:        //MAY
 			switch(ld.getDayOfMonth()){
 			case 6: motd=(ld.getYear()-2014)+"th Birthday of MPP"; break;
-
 			case 17:
 				switch(i){
-				case 0: motd=(ld.getYear()-2019)+"th birthday of steamwar.de"; break;                      //TODO steamwar flag
-
-				case 1: event=2; motd="Internation day against Biphobia"; break;
-
-				case 2: event=3; motd="Internation day against Transphobia"; break;
-
-				case 3: event=1; motd="Internation day against Homophobia"; break;
+				case 0: motd=(ld.getYear()-2019)+"th birthday of steamwar.de"; break;
+				case 1: event=2; break;
+				case 2: event=3; break;
+				case 3: event=1; break;
 				}
-
-			case 19: event=7; motd="Agender Pride Day!"; break;
-
-			case 24: event=4; motd="Today is Pan awareness day."; break;
-
-			case 27: {int z=2021-ld.getYear(); motd=z+" year"+(z>1?"s":"")+" ago WGC Closed Beta v1 was released.";} break;
-
+			case 19: event=7; break;
+			case 24: event=4; break;
+			case 27: motd=(ld.getYear()-2021)+" years ago WGC Closed Beta v1 was released."; break;
 			case 29: motd="Gear Forge opened "+(ld.getYear()-2015)+" years ago."; break;
-			}
-			break;
-
-		case 6:        //JUN
-			switch(ld.getDayOfMonth()){
-			case 26: motd="Happy "+(ld.getYear()-1999)+"th."; break;
 			}
 			break;
 
 		case 7:        //JUL
 			switch(ld.getDayOfMonth()){
-			case 14: event=5; motd="There are more than 2 gender!"; break;
-
-			case 16: event=3; if(i==0) motd="Happy drag day"; break;            //TODO drag pride flag
-			}
-			break;
-
-		case 8:                                           //AUG
-			switch(ld.getDayOfMonth()){
-			case 1: motd="\u25D5\u203F\u25D5"; break; //VOL logo
-
-			case 22: motd=(ld.getYear()-2014)+" years ago.."; break;
-
-			case 28: motd="#Stevia"; break;
+			case 14: event=5; break;
+			case 16: event=3; break;
 			}
 			break;
 
 		case 9:        //SEP
 			switch(ld.getDayOfMonth()){
-			case 18: motd="Alpha Falcons go!"; break;
-
-			case 21: motd="youtube.com/watch?v=vGiHuyfJKj0"; event=18; break;             //TODO csv4 tut? else change flag
-
-			case 23: motd="Today is CBD!"; event=2; break;
+			case 21: event=18; break;
+			case 23: event=2; break;
 			}
 			break;
 
 		case 10:        //OCT
 			switch(ld.getDayOfMonth()){
-			case 3: motd="many years ago a wall broke - be happy!"; break;
+			case 8: event=6; break;
 
-			case 8: motd="international lesbian day"; event=6; break;
+			case 11: event=1; break;
 
-			case 11: motd="Today would be a good day to come out.."; event=1; break;
-
-			case 26: if(i==0) motd="Intersex exists."; event=12; break;
+			case 26: event=12; break;
 			}
 			break;
 
 		case 11:        //NOV
 			switch(ld.getDayOfMonth()){
-			case 20: motd="Internation Transgender day of Remembrance."; event=3; break;
+			case 20: event=3; break;
 			}
 			break;
 
@@ -202,14 +141,12 @@ public class JoinMsgPanel {
 			}
 		if(motd=="")
 			switch(ld.getMonthValue()){
-			case 6: if(i==0) motd="happy pride month!"; break;
+			case 6: if(i==0) event=1; break;
 
-			case 8: if(i==0) motd="\u2600"; break;     //SUN
+			case 8: if(i==0) motd="\u2600"; break; //SUN
 
-			case 12:
-				if(i==0) motd="\u2603"; break;      //SNOWMAN
+			case 12: if(i==0) motd="\u2603"; break; //SNOWMAN
 			}
-		//if(flag==null)flag=new Flag(0,u.ct,u.pre16);
 		if(WGC.flagtext=="WGC")
 			flag=new Flag(event,u.ct,u.pre16);
 		else
@@ -218,7 +155,7 @@ public class JoinMsgPanel {
 
 	public void send(User u,Player p){
 		ArrayList<Player>ps=new ArrayList<>(Bukkit.getOnlinePlayers());
-		final Msg        m =new Msg(u,null).aC("WGC CB-"+WGC.VERSION+" (made by Jan9103)",Msg.URL,"https://discord.gg/ddB2MDK","Join the official Discord-Server")
+		final Msg        m =new Msg(u,null).a("WGC v"+WGC.VERSION+" (made by Jan9103)")
 				     .a("\nPing: ").b(p.getPing()+"")
 				     .a("\nTPS: ").b(TPS.b())
 				     .a("\nloaded Areas: ").b(WgArea.areas.size()+"")
