@@ -49,7 +49,7 @@ public class AsyncTechHidePlus extends AsyncEditor3 {
 	}
 
 	@Override public void exe(int xl,int xh,int yl,int yh,int zl,int zh){
-		if(yl<1) yl=1;
+		if(yl<=w.getMinHeight()) yl=w.getMinHeight();
 		if(yh>=w.getMaxHeight()) yh=w.getMaxHeight()-2;
 		for(int x=xl; x<=xh; x++)
 			for(int y=yl; y<=yh; y++)

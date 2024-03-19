@@ -52,8 +52,8 @@ public class WEArea {
 	public void expand(BlockFace f,int i){
 		switch(f){
 		case DOWN:
-			if(a.y<b.y) a=new BigCoord(a.x,Integer.max(0,a.y-i),a.z);
-			else b=new BigCoord(b.x,Integer.max(0,b.y-i),b.z);
+			if(a.y<b.y) a=new BigCoord(a.x,Integer.max(w.getMinHeight(),a.y-i),a.z);
+			else b=new BigCoord(b.x,Integer.max(w.getMinHeight(),b.y-i),b.z);
 			return;
 
 		case EAST:
@@ -94,8 +94,8 @@ public class WEArea {
 		w=l.getWorld();
 		if(l.getBlockY()>w.getMaxHeight())
 			a=new BigCoord(l.getBlockX(),w.getMaxHeight(),l.getBlockZ());
-		else if(l.getBlockY()<0)
-			a=new BigCoord(l.getBlockX(),0,l.getBlockZ());
+		else if(l.getBlockY()<w.getMinHeight())
+			a=new BigCoord(l.getBlockX(),w.getMinHeight(),l.getBlockZ());
 		else
 			a=new BigCoord(l.getBlockX(),l.getBlockY(),l.getBlockZ());
 	}
@@ -104,8 +104,8 @@ public class WEArea {
 		w=l.getWorld();
 		if(l.getBlockY()>w.getMaxHeight())
 			b=new BigCoord(l.getBlockX(),w.getMaxHeight(),l.getBlockZ());
-		else if(l.getBlockY()<0)
-			b=new BigCoord(l.getBlockX(),0,l.getBlockZ());
+		else if(l.getBlockY()<w.getMinHeight())
+			b=new BigCoord(l.getBlockX(),w.getMinHeight(),l.getBlockZ());
 		else
 			b=new BigCoord(l.getBlockX(),l.getBlockY(),l.getBlockZ());
 	}
@@ -114,8 +114,8 @@ public class WEArea {
 		w=b.getWorld();
 		if(b.getY()>w.getMaxHeight())
 			a=new BigCoord(b.getX(),w.getMaxHeight(),b.getZ());
-		else if(b.getY()<0)
-			a=new BigCoord(b.getX(),0,b.getZ());
+		else if(b.getY()<w.getMinHeight())
+			a=new BigCoord(b.getX(),w.getMinHeight(),b.getZ());
 		else
 			a=new BigCoord(b.getX(),b.getY(),b.getZ());
 	}
@@ -124,8 +124,8 @@ public class WEArea {
 		w=block.getWorld();
 		if(block.getY()>w.getMaxHeight())
 			b=new BigCoord(block.getX(),w.getMaxHeight(),block.getZ());
-		else if(block.getY()<0)
-			b=new BigCoord(block.getX(),0,block.getZ());
+		else if(block.getY()<w.getMinHeight())
+			b=new BigCoord(block.getX(),w.getMinHeight(),block.getZ());
 		else
 			b=new BigCoord(block.getX(),block.getY(),block.getZ());
 	}
