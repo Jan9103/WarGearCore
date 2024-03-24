@@ -45,20 +45,8 @@ build/spigot/server.jar: build/spigot/BuildTools.jar
 build/spigot/spigot.jar: build/spigot/server.jar
 	unzip -p $< "META-INF/versions/spigot-*.jar" > $@
 
-build/spigot/spigot-api.jar: build/spigot/server.jar
-	unzip -p $< "META-INF/libraries/spigot-api-*.jar" > $@
-
-build/spigot/gson.jar: build/spigot/server.jar
-	unzip -p $< "META-INF/libraries/gson-*.jar" > $@
-
-build/spigot/authlib.jar: build/spigot/server.jar
-	unzip -p $< "META-INF/libraries/authlib-*.jar" > $@
-
-build/spigot/guava.jar: build/spigot/server.jar
-	unzip -p $< "META-INF/libraries/guava-*.jar" > $@
-
-build/spigot/bungeecord-chat.jar: build/spigot/server.jar
-	unzip -p $< "META-INF/libraries/bungeecord-chat-*.jar" > $@
+build/spigot/%.jar: build/spigot/server.jar
+	unzip -p $< "META-INF/libraries/$$(basename $@ | rev | cut -c5- | rev)*.jar" > $@
 
 build/%/MANIFEST.MF:
 	mkdir -p "$$(dirname "$@")"
